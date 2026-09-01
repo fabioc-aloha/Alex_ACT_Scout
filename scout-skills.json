@@ -81,7 +81,7 @@
   },
   {
     "name": "markdown-mermaid",
-    "description": "Author Mermaid diagrams that render correctly in GitHub, VS Code, and Mermaid 10+ consumers. Applies a config-driven init directive + linkStyle + semantic classDef vocabulary from `.github/config/brand-palette.json` (default: 6-role semantic palette + typography). Covers renderer pitfalls, mode fragility, and diagram-tool selection. Use when embedding Mermaid in markdown, debugging silent render failures, or choosing between Mermaid / Excalidraw / D2 / PlantUML.",
+    "description": "Create and maintain Mermaid or custom SVG diagrams as concise visual arguments tied to a document's Big Idea. Use when a diagram must clarify a process, decision, relationship, or state, or when document edits may have made one stale.",
     "path": "skills/markdown-mermaid/SKILL.md"
   },
   {

@@ -1,6 +1,6 @@
 {
     "name": "alex-act-scout",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "private": true,
     "description": "Curated Alex ACT skills and Scout-native shared continuity for Microsoft Scout.",
     "scripts": {

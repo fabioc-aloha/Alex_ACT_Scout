@@ -15,17 +15,17 @@ function temporary(prefix) {
     return fs.mkdtempSync(path.join(os.tmpdir(), prefix));
 }
 
-test('Scout v2.0.4 release metadata and catalogs are publishable', () => {
+test('Scout v2.0.5 release metadata and catalogs are publishable', () => {
     const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
     const version = fs.readFileSync(path.join(root, 'VERSION'), 'utf8').trim();
     const changelog = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8');
     const catalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills.json'), 'utf8'));
     const visualCatalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills-visual.json'), 'utf8'));
 
-    assert.equal(packageJson.version, '2.0.4');
+    assert.equal(packageJson.version, '2.0.5');
     assert.equal(version, packageJson.version);
     assert.equal(packageJson.private, true);
-    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.4\] - 2026-09-01[\s\S]*## \[2\.0\.3\] - 2026-09-01[\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
+    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.5\] - 2026-09-01[\s\S]*## \[2\.0\.4\] - 2026-09-01[\s\S]*## \[2\.0\.3\] - 2026-09-01[\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
     assert.equal(catalog.length, 32);
     assert.equal(visualCatalog.length, 6);
 });
@@ -116,6 +116,34 @@ test('Scout catalog excludes retired message bus capabilities', () => {
 
     assert.equal(catalog.some((skill) => skill.name === 'scout-message-bus'), false);
     assert.equal(catalog.some((skill) => skill.name === 'scout-message-bus-heartbeat'), false);
+});
+
+test('Mermaid skill selects custom SVG when needed and checks document drift', () => {
+    const skillPath = path.join(root, 'skills', 'markdown-mermaid', 'SKILL.md');
+    const content = fs.readFileSync(skillPath, 'utf8');
+    const catalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills.json'), 'utf8'));
+    const entry = catalog.find((skill) => skill.name === 'markdown-mermaid');
+
+    assert.match(content, /## Diagram brief/);
+    assert.match(content, /## Choose custom SVG when it fits better/);
+    assert.match(content, /If the optional visual add-on is installed/);
+    assert.match(content,
+        /In a\s+core-only\s+installation,\s+inspect\s+the\s+available\s+target\s+renderer\s+or\s+ask\s+the\s+user\s+to\s+confirm\s+the\s+visual\s+result\./);
+    assert.match(content, /## Document drift check/);
+    assert.match(content, /\*\*Diagram drift\*\*/);
+    assert.doesNotMatch(content, /%%\{init:|classDef\s|linkStyle\s/);
+    assert.equal(fs.existsSync(path.join(root, 'skills', 'markdown-mermaid', 'markdown-light.css')), false);
+    for (const reference of [
+        'diagram-reference.md',
+        'markdown-best-practices.md',
+        'pitfalls.md',
+        'tool-ecosystem.md',
+    ]) {
+        assert.equal(fs.existsSync(path.join(
+            root, 'skills', 'markdown-mermaid', 'references', reference)), false);
+    }
+    assert.equal(entry.description,
+        "Create and maintain Mermaid or custom SVG diagrams as concise visual arguments tied to a document's Big Idea. Use when a diagram must clarify a process, decision, relationship, or state, or when document edits may have made one stale.");
 });
 
 test('decision workflows require a bounded shared knowledge consultation', () => {

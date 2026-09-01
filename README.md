@@ -10,7 +10,7 @@ selected compatible capabilities from adjacent Alex ACT projects. It also owns
 Scout-native shared knowledge capture. It is a curated package, not a
 byte-for-byte copy of a source plugin.
 
-**Current release: `v2.0.4`.** The package ships 32 core skills, six optional
+**Current release: `v2.0.5`.** The package ships 32 core skills, six optional
 visual skills, preview-first installers, and tested shared-continuity scripts.
 Collect and review user feedback before changing skill behavior.
 
@@ -43,6 +43,83 @@ Use:
 - `scout-shared-data-setup` to initialize shared evidence and knowledge-base storage on a new device.
 - `scout-greeting-checkin` to inspect package readiness at the start of a session.
 - [Knowledge base guide](docs/KNOWLEDGE-BASE.md) for the shared lesson-capture process.
+
+## Session bookends for testers
+
+Use the two session-boundary skills around meaningful testing, without turning
+routine work into ceremony.
+
+```mermaid
+flowchart TD
+    A([Hi]) --> B[Greeting check-in<br/>Read-only readiness check]
+    B --> C[Regular workflow<br/>Use task-relevant skills]
+    C --> D[Watch the context meter<br/>Compare token use to the window]
+    D --> E[Meditation<br/>Capture approved durable lessons]
+    E --> F{Continue?}
+    F -->|No| G[End session]
+    F -->|Yes, with approval| H[Compact and continue]
+```
+
+1. **Open:** Start with `scout-greeting-checkin` when a new session begins. It
+   performs a short, read-only check of the installed package, shared-data
+   readiness, optional Flint setup, and available releases. It reports only
+   actionable deviations and never installs, updates, or changes configuration
+   on its own.
+2. **Work:** Use the relevant skills for the actual task. A health check is not
+   a prerequisite for productive work; fix a reported deviation only when it
+   matters to the task.
+3. **Close:** Use `meditation` before compacting, closing, deleting, or moving
+   on from a session that produced a reusable lesson. It extracts only
+   verified, privacy-safe lessons; inventories explicitly used Alex ACT Scout
+   skills; and asks for approval before recording anything or compacting the
+   session.
+
+If the session was routine or yielded no reusable learning, meditation should
+state that no knowledge-base record is warranted. Do not use it as a transcript
+archive.
+
+## The OneDrive memory bus
+
+The OneDrive memory bus is an opt-in, user-selected synchronized folder that
+gives Scout installations a shared continuity layer. Each device points to its
+own local sync path for the same folder; Scout never assumes a OneDrive,
+SharePoint, or other cloud location.
+
+The bus has two narrow payloads:
+
+| Payload | Location | Purpose |
+| --- | --- | --- |
+| Shared lessons | `<shared-sync-root>\knowledge-base` | Searchable, reviewed decisions, procedures, failure modes, anti-patterns, and gotchas for future sessions and Scout instances. |
+| Component evidence | `<shared-sync-root>\component-evidence-data` | Privacy-minimizing records of explicitly used skills and user-provided usefulness outcomes. |
+
+Run `scout-shared-data-setup` on each device to preview the folders and local
+configuration, then approve the setup explicitly. The local configuration
+stores only the selected path. The shared bus does **not** replace Scout's
+native memory, which remains suitable for compact preferences and durable
+facts, and it does not store raw prompts, transcripts, repository content,
+paths, identities, credentials, or other private source material.
+
+```mermaid
+flowchart TD
+    subgraph LOCAL["Local to this Scout device"]
+        direction TB
+        A[Native Scout memory<br/>Compact preferences and durable facts]
+        B[Current session context<br/>Active conversation state]
+    end
+
+    subgraph BUS["OneDrive memory bus - opt in"]
+        direction TB
+        C[Shared knowledge base<br/>Reviewed reusable lessons]
+        D[Component evidence<br/>Skill identifiers and user-provided outcomes]
+    end
+
+    E[Excluded from the bus<br/>Raw prompts and transcripts<br/>Repository content, paths, identities, and credentials]
+
+    B -->|Meditation with approval| C
+    B -->|Approved inventory or outcome| D
+    B -. Never copy .-> E
+
+```
 
 ### Flint charts
 
@@ -79,6 +156,19 @@ Other high-impact skills worth calling out:
 | `security-and-hardening` | Adds a safety pass for auth, input handling, storage, integrations, and untrusted data. |
 | `doc-hygiene` | Reduces stale docs, wrong counts, dead links, and documentation drift. |
 | `alex-finch-personality` | Gives Scout a consistent ACT-aligned stance: concise, skeptical, calibrated, and user-agency preserving. |
+
+## Find your first skill
+
+```mermaid
+flowchart TD
+    A([Choose the task]) --> B{What do you need?}
+    B -->|Unexpected behavior| C[systematic-debugging]
+    B -->|Important decision| D[critical-thinking<br/>or adversarial-review]
+    B -->|Substantive change| E[plan]
+    B -->|Code or risk review| F[code-review<br/>or security-and-hardening]
+    B -->|Documentation| G[doc-hygiene<br/>and lint-clean-markdown]
+    B -->|Reusable lesson| H[meditation<br/>and scout-knowledge-base]
+```
 
 ## Quick start
 
@@ -149,6 +239,18 @@ See [Installer script](docs/INSTALLER.md) for Windows and macOS/Linux parameters
 This package is maintained independently by a Scout power user, not the
 Microsoft Scout product team. Volunteers can help establish whether these
 workflows improve real work.
+
+```mermaid
+flowchart TD
+    A[Preview install]
+    B[Apply]
+    C[Restart Scout]
+    D[Try one real task]
+    E[Note the outcome]
+    F[Share safe feedback]
+
+    A --> B --> C --> D --> E --> F
+```
 
 1. Clone and install with the quick-start steps above, then restart Scout.
 2. Choose one real task and one relevant skill. Good starting points include

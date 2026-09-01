@@ -98,8 +98,7 @@ Do not allow `on*` event attributes by default. If a product genuinely needs an 
 
 ## Related
 
-- [markdown-mermaid](../markdown-mermaid/SKILL.md) — markdown + Mermaid style guide
-- [markdown-mermaid § Mode Fragility](../markdown-mermaid/SKILL.md) — silent render failures
+- [markdown-mermaid](../markdown-mermaid/SKILL.md) — claim-led Mermaid authoring and document-drift checks
 - [lint-clean-markdown](../lint-clean-markdown/SKILL.md) — author-side hygiene
 
 ## Would Revise If

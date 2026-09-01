@@ -149,12 +149,11 @@ Before writing markdown, plan for:
 2. ☐ Will I have code blocks? → blank lines around them
 3. ☐ Will I show "wrong" examples? → can't nest fences, describe instead
 4. ☐ Will I have tables? → need `| ---- |` separator row
-5. ☐ Will I have mermaid? → diagram type after init
+5. ☐ Will I have Mermaid? → diagram type first, raw source only
 
 ## Related
 
-- [markdown-mermaid](../markdown-mermaid/SKILL.md) — full markdown + Mermaid style guide
-- [markdown-mermaid § Mode Fragility](../markdown-mermaid/SKILL.md) — silent render failures
+- [markdown-mermaid](../markdown-mermaid/SKILL.md) — claim-led Mermaid authoring and document-drift checks
 
 ## Falsifiability
 
