@@ -83,11 +83,9 @@ The rest of this skill is the craft of authoring a _good_ implementation plan �
 
 ## Overview
 
-Write comprehensive implementation plans assuming the implementer has zero context for the codebase and questionable taste. Document everything they need: which files to touch, complete code, testing commands, docs to check, how to verify. Give them bite-sized tasks. DRY. YAGNI. TDD. Frequent commits.
+Write comprehensive plans for a skilled implementer unfamiliar with the codebase, toolset, and domain. Document exact files, complete code, testing commands, docs to check, and verification. Use bite-sized tasks, DRY, YAGNI, TDD, and frequent commits.
 
-Assume the implementer is a skilled developer but knows almost nothing about the toolset or problem domain. Assume they don't know good test design very well.
-
-**Core principle:** A good plan makes implementation obvious. If someone has to guess, the plan is incomplete.
+**Core principle:** A good plan makes implementation obvious; if someone must guess, it is incomplete.
 
 ## When a Full Implementation Plan Helps
 
@@ -218,7 +216,7 @@ Read and understand:
 
 ### Step 2: Explore the Codebase
 
-Use the workspace's search and read tools to understand the project:
+Use workspace search and read tools to understand the project:
 
 - Understand project structure — list/glob files under relevant directories
 - Look at similar features — search for related patterns
@@ -236,7 +234,7 @@ Decide:
 
 ### Step 4: Write Tasks
 
-Create tasks in order:
+Create tasks in this order:
 
 1. Setup/infrastructure
 2. Core functionality (TDD for each)
@@ -246,7 +244,7 @@ Create tasks in order:
 
 ### Step 5: Add Complete Details
 
-For each task, include:
+For every task, include:
 
 - **Exact file paths** (not "the config file" but `src/config/settings.py`)
 - **Complete code examples** (not "add validation" but the actual code)

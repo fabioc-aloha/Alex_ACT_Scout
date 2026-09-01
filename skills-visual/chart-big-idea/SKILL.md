@@ -8,7 +8,7 @@ description: >-
 
 # Chart Big Idea
 
-Every chart needs a claim. The Big Idea is the sentence the chart should prove at a glance.
+Every chart needs a claim: the Big Idea, the sentence it should prove at a glance.
 
 ## When to use
 

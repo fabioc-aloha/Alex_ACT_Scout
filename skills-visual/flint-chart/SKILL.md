@@ -8,7 +8,7 @@ description: >-
 
 # Flint Chart
 
-Author charts with Flint in Microsoft Scout. This skill turns a user request into a chart brief, a valid Flint payload, and a rendered artifact.
+Author Flint charts in Microsoft Scout, turning requests into a chart brief, valid payload, and rendered artifact.
 
 ## When to use
 

@@ -8,7 +8,7 @@ description: >-
 
 # Chart Vocabulary
 
-Select chart types by analytical job, not visual novelty.
+Select chart types by analytical job—not visual novelty.
 
 ## Shared Knowledge Gate
 

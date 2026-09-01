@@ -15,17 +15,17 @@ function temporary(prefix) {
     return fs.mkdtempSync(path.join(os.tmpdir(), prefix));
 }
 
-test('Scout v2.0.3 release metadata and catalogs are publishable', () => {
+test('Scout v2.0.4 release metadata and catalogs are publishable', () => {
     const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
     const version = fs.readFileSync(path.join(root, 'VERSION'), 'utf8').trim();
     const changelog = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8');
     const catalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills.json'), 'utf8'));
     const visualCatalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills-visual.json'), 'utf8'));
 
-    assert.equal(packageJson.version, '2.0.3');
+    assert.equal(packageJson.version, '2.0.4');
     assert.equal(version, packageJson.version);
     assert.equal(packageJson.private, true);
-    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.3\] - 2026-09-01[\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[2\.0\.0\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
+    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.4\] - 2026-09-01[\s\S]*## \[2\.0\.3\] - 2026-09-01[\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
     assert.equal(catalog.length, 32);
     assert.equal(visualCatalog.length, 6);
 });

@@ -8,9 +8,8 @@ description: >-
 
 # MCP Builder
 
-Build MCP servers for LLM tool integration. Authoring guide for Python (FastMCP), Node/TypeScript (MCP SDK), and C#/.NET (Microsoft MCP SDK).
-
----
+Build MCP servers for LLM tool integration in Python (FastMCP), Node/TypeScript
+(MCP SDK), or C#/.NET (Microsoft MCP SDK).
 
 ## When to Build vs Use Existing
 
@@ -35,8 +34,6 @@ Before building custom, check if Microsoft already provides one:
 | Custom internal APIs | Build **custom server** (this guide) |
 | Third-party SaaS integration | Build **custom server** (this guide) |
 
----
-
 ## Shared Knowledge Gate
 
 Before planning, evaluating, or designing a non-trivial MCP integration, consult
@@ -52,8 +49,6 @@ evidence; do not create a local fallback while designing.
 |------|-----------|----------|---------|
 | **Local** | stdio | Desktop apps, single-user, local dev | Azure MCP Server via NPM/Docker |
 | **Remote** | Streamable HTTP | Cloud services, multi-tenant, Agent Service | `https://mcp.ai.azure.com` (Foundry) |
-
----
 
 ## Phase 1: Research and Planning
 
@@ -97,8 +92,6 @@ Key pages to review:
 |-----------|----------|-----------------|
 | **Streamable HTTP** | Remote servers, multi-tenant, Agent Service | Stateless, scalable, requires auth |
 | **stdio** | Local servers, desktop apps | Simple, single-user, no network |
-
----
 
 ## Phase 2: Implementation
 
@@ -163,8 +156,6 @@ var server = new McpServerBuilder()
 await server.RunAsync();
 ```
 
----
-
 ## Tool Design Best Practices
 
 ### Input Schema
@@ -221,8 +212,6 @@ server.tool(
 );
 ```
 
----
-
 ## Phase 3: Testing
 
 ### Build and Verify
@@ -243,7 +232,7 @@ npx @modelcontextprotocol/inspector -- python your_server.py
 
 ### MCP Inspector
 
-Interactive debugging for any MCP server:
+Use the MCP Inspector for interactive debugging:
 
 ```bash
 npx @modelcontextprotocol/inspector /path/to/your/mcp-server
@@ -258,15 +247,12 @@ npx @modelcontextprotocol/inspector /path/to/your/mcp-server
 - [ ] Pagination support where applicable
 - [ ] Proper async/await for I/O operations
 
----
-
 ## Phase 4: Create Evaluations
 
 ### Evaluation Purpose
 
-Test whether LLMs can effectively use your MCP server to answer realistic, complex questions.
-
-### Create 10 Evaluation Questions
+Test whether LLMs can effectively use your MCP server to answer realistic,
+complex questions. Create 10 evaluation questions:
 
 1. **Tool Inspection**: List available tools and understand capabilities
 2. **Content Exploration**: Use READ-ONLY operations to explore data
@@ -296,8 +282,6 @@ Each question must be:
 </evaluation>
 ```
 
----
-
 ## Common Issues
 
 | Issue | Cause | Solution |
@@ -307,8 +291,6 @@ Each question must be:
 | Connection refused | Port conflict or server crash | Check port availability, review logs |
 | Timeout | Slow API calls | Add timeout handling, implement pagination |
 | Schema validation | Invalid input schema | Use Zod/Pydantic with proper constraints |
-
----
 
 ## References
 

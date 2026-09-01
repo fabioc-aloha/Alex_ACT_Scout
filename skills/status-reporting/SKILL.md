@@ -8,11 +8,8 @@ description: >-
 
 # Status Reporting Skill
 
-Generate clear, audience-appropriate project status updates. Transform technical progress into stakeholder-friendly communication.
-
-## Core Philosophy
-
-> "Stakeholders don't need to know HOW you did it — they need to know WHAT it means for them."
+Generate clear, audience-appropriate project status updates that translate
+technical progress into stakeholder-friendly communication.
 
 Status reports serve different audiences with different needs:
 
@@ -267,10 +264,6 @@ Revisit this skill by **2026-11-30** or sooner if any of the following fires:
 - Stakeholder feedback reports the templates as unclear, jargon-heavy, or missing decisions-needed sections ≥3 times within a quarter
 - The audience-adaptation table produces tone mismatches when applied verbatim ≥2 times in observed reports
 - Reports generated via these templates consistently bury bad news or miss escalation triggers that surface later as preventable surprises
-
----
-
-*Good status reports build trust. Great ones prevent surprise.*
 
 ## Complementary Scout resources
 

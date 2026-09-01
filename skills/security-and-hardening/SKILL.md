@@ -138,7 +138,6 @@ app.patch("/api/tasks/:id", authenticate, async (req, res) => {
     });
   }
 
-  // Proceed with update
   const updated = await taskService.update(req.params.id, req.body);
   return res.json(updated);
 });

@@ -8,7 +8,7 @@ description: >-
 
 # Render Verify
 
-Rendered output can fail even when specs validate. This skill is the final visual quality gate.
+Rendered output can fail despite valid specs. This skill is the final visual quality gate.
 
 ## When to use
 

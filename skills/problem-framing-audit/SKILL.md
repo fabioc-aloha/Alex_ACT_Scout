@@ -27,8 +27,6 @@ The frame audit runs **before** the materiality gate. Materiality asks "if I get
 | User says "just" do X, or "simply" Y, or "all you have to do is" | **Always audit** — these phrases mark unexamined frames |
 | User explicitly asks to run `problem-framing-audit` or asks "what am I missing?" | **Always audit** |
 
-The rule is asymmetric on purpose: trivial tasks pass through; non-trivial tasks audit first.
-
 ## Shared Knowledge Gate
 
 Before selecting a frame for non-trivial, repeated, or consequential work,
@@ -73,8 +71,6 @@ The most common type-III error: the user names a *symptom* and I optimise for it
 | "Why does this query take 2 minutes?" | Query is fine; it returns 47M rows the UI then renders | Fix the contract, not the query |
 | "Add a workaround for this API quirk" | The "quirk" is the API enforcing a real constraint | Honour the constraint, not work around it |
 | "Make our skill load faster" | The skill is fine; it's loaded on every request when it should load once | Move the load gate, not the skill body |
-
-In each row, the symptom-frame produces a working but pointless solution. The cause-frame produces the right one.
 
 ## Output Markers
 

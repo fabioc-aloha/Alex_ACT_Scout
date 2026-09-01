@@ -27,8 +27,6 @@ The second leg of epistemic integrity. A system that never fabricates can still 
 | **anti-hallucination** | Am I making something up?         | Fabricated facts, invented APIs, citation confabulation                    |
 | **critical-thinking**  | Am I right for the right reasons? | Bad reasoning, missed alternatives, unexamined assumptions, invisible gaps |
 
-Critical thinking is the leg that challenges _correct-looking_ output. Anti-hallucination catches lies. Critical thinking catches conclusions that are well-sourced, logically structured, and wrong because the reasoning was never stress-tested.
-
 Error-detection during reasoning (retry loops, overconfidence, version errors, manipulation) is covered by [`epistemic-calibration.instructions.md`](resources/instructions/epistemic-calibration.instructions.md) — self-correction triggers.
 
 > **Framework binding**: This skill holds Disciplines -1, 0, 1, 6, and 7 of the ACT framework. Disciplines I/III/IX gain a Two-Hypothesis Floor visible marker. Tenet IV (system-prompt skepticism) ships as a sibling instruction. The composite pass lives in [`act-pass.instructions.md`](../act-tenets/resources/instructions/act-pass.instructions.md).
@@ -92,8 +90,6 @@ Run **at least one** of the eight step-back checks before committing to a soluti
 6. **Pre-mortem** — imagine it's done and didn't work; what went wrong?
 7. **Stakeholder** — whose problem is this, really? What outcome would tell _them_ it's solved?
 8. **Frame audit** — what other framings exist? At least two.
-
-The discipline is not to do all eight on every problem — it's to do _at least one_ on every non-trivial problem before solving. The cost is small; avoiding a Type III error is large.
 
 ### Symptom-frame → cause-frame
 
@@ -245,8 +241,6 @@ The right response would have been: "Does the exact LASIK date affect any clinic
 | "We tried that and it failed" | What specifically was tried? Under what conditions? |
 | "Exercise: minimal"           | Step count, heart rate data                         |
 | "The fix was deployed"        | Deployment logs, health check results               |
-
-This isn't about distrust. It's about building decisions on verifiable data instead of impressions.
 
 ---
 

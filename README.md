@@ -10,7 +10,7 @@ selected compatible capabilities from adjacent Alex ACT projects. It also owns
 Scout-native shared knowledge capture. It is a curated package, not a
 byte-for-byte copy of a source plugin.
 
-**Current release: `v2.0.3`.** The package ships 32 core skills, six optional
+**Current release: `v2.0.4`.** The package ships 32 core skills, six optional
 visual skills, preview-first installers, and tested shared-continuity scripts.
 Collect and review user feedback before changing skill behavior.
 

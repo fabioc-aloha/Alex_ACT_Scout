@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.4] - 2026-09-01
+
+### Changed
+
+- Applied conservative, behavior-preserving first-pass compilation to 12
+  high-priority skills. An independent semantic review and package-layout
+  validation found no behavioral losses; the pass reduced estimated token
+  volume by 1.9%.
+
 ## [2.0.3] - 2026-09-01
 
 ### Added

@@ -6,8 +6,6 @@ description: >-
 
 # Code Review Skill
 
-> Good reviews catch bugs. Great reviews teach the author something.
-
 ## Review Priority (What Matters Most)
 
 1. **Correctness** — Does it do what it's supposed to?
