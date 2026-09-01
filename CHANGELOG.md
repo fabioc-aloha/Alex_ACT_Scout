@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.6] - 2026-09-01
+
+### Changed
+
+- Replaced decorative README diagrams with one claim-led Mermaid flow and an
+  accessible SVG that explains the OneDrive memory-bus boundary.
+- Added a README evidence-lifecycle SVG that separates pre-release acceptance
+  checks from post-release component evidence and task-efficacy evaluation.
+- Rewrote README headings and skill descriptions around concrete tester actions,
+  outcomes, and boundaries.
+
 ## [2.0.5] - 2026-09-01
 
 ### Changed

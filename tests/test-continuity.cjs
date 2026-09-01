@@ -15,17 +15,17 @@ function temporary(prefix) {
     return fs.mkdtempSync(path.join(os.tmpdir(), prefix));
 }
 
-test('Scout v2.0.5 release metadata and catalogs are publishable', () => {
+test('Scout v2.0.6 release metadata and catalogs are publishable', () => {
     const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
     const version = fs.readFileSync(path.join(root, 'VERSION'), 'utf8').trim();
     const changelog = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8');
     const catalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills.json'), 'utf8'));
     const visualCatalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills-visual.json'), 'utf8'));
 
-    assert.equal(packageJson.version, '2.0.5');
+    assert.equal(packageJson.version, '2.0.6');
     assert.equal(version, packageJson.version);
     assert.equal(packageJson.private, true);
-    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.5\] - 2026-09-01[\s\S]*## \[2\.0\.4\] - 2026-09-01[\s\S]*## \[2\.0\.3\] - 2026-09-01[\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
+    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.6\] - 2026-09-01[\s\S]*## \[2\.0\.5\] - 2026-09-01[\s\S]*## \[2\.0\.4\] - 2026-09-01[\s\S]*## \[2\.0\.3\] - 2026-09-01[\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
     assert.equal(catalog.length, 32);
     assert.equal(visualCatalog.length, 6);
 });
@@ -144,6 +144,45 @@ test('Mermaid skill selects custom SVG when needed and checks document drift', (
     }
     assert.equal(entry.description,
         "Create and maintain Mermaid or custom SVG diagrams as concise visual arguments tied to a document's Big Idea. Use when a diagram must clarify a process, decision, relationship, or state, or when document edits may have made one stale.");
+});
+
+test('README uses raw Mermaid and accessible continuity SVGs', () => {
+    const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+    const diagrams = [...readme.matchAll(/```mermaid\r?\n([\s\S]*?)\r?\n```/g)];
+
+    assert.equal(diagrams.length, 1);
+    assert.match(diagrams[0][1], /flowchart TD/);
+    assert.doesNotMatch(diagrams[0][1], /%%\{init:|classDef\s|linkStyle\s|^\s*style\s/m);
+    assert.match(readme, /!\[OneDrive memory bus: approved knowledge and evidence capture from a Scout session, with raw task content excluded\.\]\(assets\/onedrive-memory-bus\.svg\)/);
+    assert.match(readme, /!\[Skill-development evidence lifecycle: acceptance checks precede a versioned skill release; tester evidence and reusable lessons inform the next skill revision\.\]\(assets\/skill-evidence-lifecycle\.svg\)/);
+    for (const layoutEntry of [
+        'CHANGELOG.md',
+        'package.json',
+        'VERSION',
+        'DEFENSIBLE-DECISION-FLINT-GALLERY.html',
+        'onedrive-memory-bus.svg',
+        'skill-evidence-lifecycle.svg',
+    ]) {
+        assert.match(readme, new RegExp(layoutEntry.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+    }
+    for (const [file, title] of [
+        ['onedrive-memory-bus.svg', 'OneDrive memory bus'],
+        ['skill-evidence-lifecycle.svg', 'Skill development evidence lifecycle'],
+    ]) {
+        const svg = fs.readFileSync(path.join(root, 'assets', file), 'utf8');
+
+        assert.match(svg, /viewBox="/);
+        assert.match(svg, /role="img"/);
+        assert.match(svg, new RegExp(`<title id="title">${title}</title>`));
+        assert.doesNotMatch(svg, /<script\b|<image\b/i);
+    }
+    const lifecycle = fs.readFileSync(path.join(
+        root, 'assets', 'skill-evidence-lifecycle.svg'), 'utf8');
+    assert.match(lifecycle, /BEFORE A SKILL RELEASE/);
+    assert.match(lifecycle, /Is this skill change ready\?/);
+    assert.match(lifecycle, /AFTER USERS TRY THE SKILL/);
+    assert.match(lifecycle, /What did we learn\?/);
+    assert.match(lifecycle, /improve the next skill revision/);
 });
 
 test('decision workflows require a bounded shared knowledge consultation', () => {

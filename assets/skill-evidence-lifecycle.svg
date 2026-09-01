@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" width="1100" height="480" role="img" aria-labelledby="title desc">
+  <title id="title">Skill development evidence lifecycle</title>
+  <desc id="desc">Skill behavior, package, review, and structural checks establish whether a skill change is ready to release. After users try a versioned skill release, privacy-minimized component evidence and reusable lessons inform the next skill revision without proving task efficacy.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="480" fill="#ffffff"/>
+  <text x="48" y="48" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">How a skill improves</text>
+  <text x="48" y="78" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="16">Test a skill change before release. Learn from real use after release.</text>
+
+  <rect x="48" y="112" width="350" height="278" rx="12" fill="#ddf4ff" stroke="#80ccff" stroke-width="2"/>
+  <text x="72" y="145" fill="#0550ae" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1">BEFORE A SKILL RELEASE</text>
+  <text x="72" y="172" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Is this skill change ready?</text>
+  <rect x="72" y="194" width="302" height="48" rx="7" fill="#ffffff" stroke="#80ccff" stroke-width="2"/>
+  <text x="92" y="224" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="15">Skill behavior and package tests</text>
+  <rect x="72" y="254" width="302" height="48" rx="7" fill="#ffffff" stroke="#80ccff" stroke-width="2"/>
+  <text x="92" y="284" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="15">Review the skill contract and docs</text>
+  <rect x="72" y="314" width="302" height="52" rx="7" fill="#ffffff" stroke="#80ccff" stroke-width="2"/>
+  <text x="92" y="344" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="15">Brain Compiler: structural fit</text>
+  <text x="92" y="361" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="12">Checks readiness, not usefulness.</text>
+
+  <path d="M398 251 H476" fill="none" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="407" y="230" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">release skill</text>
+  <rect x="484" y="206" width="132" height="90" rx="12" fill="#fff8c5" stroke="#d4a72c" stroke-width="2"/>
+  <text x="504" y="242" fill="#9a6700" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1">SKILL RELEASE</text>
+  <text x="504" y="270" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">vX.Y.Z</text>
+
+  <path d="M616 251 H694" fill="none" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="610" y="102" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">learn from use</text>
+  <rect x="702" y="112" width="350" height="278" rx="12" fill="#dafbe1" stroke="#6fdd8b" stroke-width="2"/>
+  <text x="726" y="145" fill="#1a7f37" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1">AFTER USERS TRY THE SKILL</text>
+  <text x="726" y="172" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">What did we learn?</text>
+  <rect x="726" y="194" width="302" height="48" rx="7" fill="#ffffff" stroke="#6fdd8b" stroke-width="2"/>
+  <text x="746" y="224" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="15">Meditation: traceable skill use</text>
+  <rect x="726" y="254" width="302" height="48" rx="7" fill="#ffffff" stroke="#6fdd8b" stroke-width="2"/>
+  <text x="746" y="277" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="15">Explicit user outcome:</text>
+  <text x="746" y="295" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="15">helped, neutral, or not helpful</text>
+  <rect x="726" y="314" width="302" height="52" rx="7" fill="#ffffff" stroke="#6fdd8b" stroke-width="2"/>
+  <text x="746" y="344" fill="#1f2328" font-family="Segoe UI, Arial, sans-serif" font-size="15">Knowledge base: reusable lesson</text>
+  <text x="746" y="361" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="12">Guide the next revision, never store raw tasks.</text>
+
+  <path d="M877 390 V424 H223 V390" fill="none" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="462" y="418" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">improve the next skill revision</text>
+
+  <rect x="48" y="434" width="1004" height="28" rx="7" fill="#ffebe9" stroke="#f5a3a3" stroke-width="2"/>
+  <text x="72" y="453" fill="#cf222e" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Prove task efficacy separately with representative cases and a defined baseline.</text>
+</svg>
