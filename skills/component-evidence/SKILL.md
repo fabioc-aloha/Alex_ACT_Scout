@@ -64,6 +64,10 @@ contains only the selected evidence-root path. Later commands use this
 configured location when `--evidence-root` is omitted and fail rather than
 creating an inferred local ledger.
 
+If a device has no configured evidence root, use
+[`scout-shared-data-setup`](../scout-shared-data-setup/SKILL.md) to preview and
+approve the shared OneDrive scaffold before returning here.
+
 ## Local Outcome Ledger
 
 After configuration, bootstrap the ledger once:

@@ -16,6 +16,15 @@ description: >-
 4. **Performance** — Will it scale?
 5. **Style** — Is it consistent? (ideally enforced by linters, not humans)
 
+## Shared Knowledge Gate
+
+Before reviewing non-trivial, repeated, or consequential changes, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas. Read only records whose
+signals or preconditions match the change, and treat them as context rather
+than authority. If unavailable, state that once and continue with the current
+evidence; do not create a local fallback while reviewing.
+
 ## 3-Pass Review
 
 | Pass | Focus | What You're Looking For | Time |

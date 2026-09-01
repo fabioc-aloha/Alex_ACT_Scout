@@ -24,6 +24,15 @@ Examples below use TypeScript/Node.js syntax for concreteness, but the principle
 - Adding file uploads, webhooks, or callbacks
 - Handling payment or PII data
 
+## Shared Knowledge Gate
+
+Before non-trivial or consequential security design, assessment, or hardening
+work, consult [`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for
+relevant prior decisions, failure modes, procedures, and gotchas. Read only
+records whose signals or preconditions match the work, and treat them as context
+rather than authority. If unavailable, state that once and continue with the
+current threat model; do not create a local fallback while hardening.
+
 ## The Three-Tier Boundary System
 
 ### Always Do (No Exceptions)

@@ -20,6 +20,16 @@ Use after any visual render:
 - screenshot or annotated image
 - documentation page with embedded images
 
+## Shared Knowledge Gate
+
+Before approving a consequential rendered visual, consult
+[`scout-knowledge-base`](../../skills/scout-knowledge-base/SKILL.md) for
+relevant prior decisions, failure modes, procedures, and gotchas. Read only
+records whose signals or preconditions match the visual, and treat them as
+context rather than authority. If unavailable, state that once and continue with
+the current verification evidence; do not create a local fallback while
+reviewing.
+
 ## Verification checklist
 
 | Check | Pass condition |

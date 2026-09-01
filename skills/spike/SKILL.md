@@ -20,6 +20,15 @@ Load this when the user says things like "let me try this", "I want to see if X 
 - The idea is already validated — jump straight to implementation
 - The question is "is this the right problem?" not "is this technically possible?" — use [problem-framing-audit](../problem-framing-audit/SKILL.md)
 
+## Shared Knowledge Gate
+
+Before a non-trivial, comparative, or consequential feasibility investigation,
+consult [`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant
+prior decisions, failure modes, procedures, and gotchas. Read only records
+whose signals or preconditions match the investigation, and treat them as
+context rather than authority. If unavailable, state that once and continue with
+current evidence; do not create a local fallback while spiking.
+
 ## Core method
 
 Regardless of scale, every spike follows this loop:

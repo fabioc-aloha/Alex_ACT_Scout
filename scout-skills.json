@@ -125,6 +125,16 @@
     "path": "skills/scout-knowledge-base/SKILL.md"
   },
   {
+    "name": "scout-greeting-checkin",
+    "description": "Run a read-only Alex ACT Scout session-start check when the user opens with hello, hi, or a greeting. Verify package setup, shared data, Flint, and available package releases, then offer explicit maintenance actions.",
+    "path": "skills/scout-greeting-checkin/SKILL.md"
+  },
+  {
+    "name": "scout-shared-data-setup",
+    "description": "Prepare a user-selected synchronized folder for Alex ACT Scout component evidence and shared knowledge-base records. Use when meditation, component-evidence, or scout-knowledge-base needs its OneDrive-backed infrastructure configured.",
+    "path": "skills/scout-shared-data-setup/SKILL.md"
+  },
+  {
     "name": "security-and-hardening",
     "description": "Hardens code against vulnerabilities. Use when handling user input, authentication, data storage, or external integrations. OWASP-aware, language-agnostic principles with TypeScript examples — applies to any feature that accepts untrusted data, manages user sessions, or interacts with third-party services.",
     "path": "skills/security-and-hardening/SKILL.md"

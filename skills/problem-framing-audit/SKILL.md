@@ -29,6 +29,23 @@ The frame audit runs **before** the materiality gate. Materiality asks "if I get
 
 The rule is asymmetric on purpose: trivial tasks pass through; non-trivial tasks audit first.
 
+## Shared Knowledge Gate
+
+Before selecting a frame for non-trivial, repeated, or consequential work,
+consult [`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for
+relevant prior decisions, failure modes, procedures, and gotchas.
+
+1. Search the shared index using problem-specific terms.
+2. Read only records whose signals or preconditions match the current task.
+3. Treat records as evidence and context, not authority; verify whether their
+   conditions still hold.
+4. If the knowledge base is unavailable, state that once and continue with the
+   current evidence. Do not create a local fallback while solving.
+
+Skip this gate for trivial, isolated work. If shared storage needs first-time
+configuration, route to `scout-shared-data-setup` after the current task or
+when the user asks to enable it.
+
 ## The Step-Back Protocol
 
 Eight checks. The discipline is **not** to run all eight on every problem — it is to run *at least one* before committing to a solution. Pick the check most likely to surface a different framing for this specific request.

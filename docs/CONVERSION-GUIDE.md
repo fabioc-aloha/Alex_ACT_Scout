@@ -319,10 +319,10 @@ compatible with Scout and documented as separately maintained package content.
 
 ## Current Alex ACT Scout mapping
 
-This package currently exposes 30 top-level Scout skills: 27 core workflow
-skills, the package orientation skill, and the adopted `compile-brain` and
-`component-evidence` skills. Two Core source skills were removed because they
-are VS Code-specific:
+This package currently exposes 32 top-level Scout skills: 28 core workflow
+skills, the package orientation skill, and the adopted `compile-brain`,
+`component-evidence`, and `scout-shared-data-setup` skills. Two Core source
+skills were removed because they are VS Code-specific:
 
 | Omitted source skill | Reason |
 | --- | --- |

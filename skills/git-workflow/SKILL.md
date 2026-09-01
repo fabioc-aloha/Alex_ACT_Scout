@@ -2,9 +2,9 @@
 name: git-workflow
 description: >-
   Apply consistent git practices for branch hygiene, safe commits, and recovery from common
-  mishaps (lost commits, bad merges, accidental pushes). Use when authoring or reviewing a git
-  workflow, recovering broken local state, or sequencing a commit/push that needs explicit user
-  approval before destructive steps.
+  mishaps (lost commits, bad merges, accidental pushes), including GitHub CLI account routing.
+  Use when authoring or reviewing a git workflow, recovering broken local state, accessing GitHub
+  repositories, or sequencing a commit/push that needs explicit user approval before destructive steps.
 ---
 
 # Git Workflow Skill
@@ -42,6 +42,35 @@ Destructive operations require explicit user approval immediately before executi
 | Reset to remote state | `git reset --hard origin/main` | Destructive; requires explicit user approval |
 | Save work temporarily | `git stash` → `git stash pop` | For quick context switch |
 | Isolated experimental work | `git worktree add ../feature branch` | Agent-friendly isolation |
+
+---
+
+## GitHub CLI Account Routing
+
+Before any `gh` operation that reads or changes a repository, resolve the
+explicit `owner/repository` identifier and inspect the GitHub CLI account route.
+Do not assume the currently active account can access the requested repository.
+
+```text
+node <this-skill>/scripts/gh-auth-route.cjs status --repo <owner/repository>
+node <this-skill>/scripts/gh-auth-route.cjs switch --repo <owner/repository>
+node <this-skill>/scripts/gh-auth-route.cjs switch --repo <owner/repository> --apply
+```
+
+The command:
+
+1. Reads configured `gh` accounts without printing credentials.
+2. Matches a personal repository owner to an authenticated account of the same
+   name.
+3. Previews any account switch by default.
+4. Requires `--apply` before switching the active GitHub CLI account.
+5. Configures Git's credential helper to use the selected `gh` account.
+6. Verifies repository access after an applied switch.
+
+For organization-owned repositories, the organization name is not an account
+name. The command reports `manual-selection-required`; select an explicitly
+authorized account and verify access before continuing. Do not guess from
+membership or reuse the last active account.
 
 ---
 

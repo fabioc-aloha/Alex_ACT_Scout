@@ -18,6 +18,8 @@ This package is for Scout users who want the Alex ACT Core skill library without
 - review-first optimization of selected skills, instructions, prompts, agents, and brain contracts
 - privacy-minimizing measurement of structural importance and explicit usefulness outcomes
 - end-of-session inventories of explicitly traceable skill use
+- approval-first setup of shared evidence and knowledge-base storage on new devices
+- read-only package readiness checks at the start of a session
 - markdown, Mermaid, and documentation hygiene
 - status reports and stakeholder communication
 - preserving ACT instruction and prompt workflows as resources beside the skills they complement
@@ -169,6 +171,18 @@ Use component-evidence to combine my Brain Compiler assessment with recorded out
 ```
 
 ```text
+Use git-workflow to confirm the correct GitHub CLI account before accessing owner/repository.
+```
+
+```text
+Use scout-greeting-checkin to check the Alex ACT Scout installation, shared data, Flint, and available releases before we begin.
+```
+
+```text
+Use scout-shared-data-setup to prepare shared OneDrive storage for meditation and component evidence.
+```
+
+```text
 Use status-reporting to produce a repository status report.
 ```
 
@@ -195,6 +209,9 @@ These skills are the highest-impact starting points:
 | `plan` | Turns larger changes into concrete, verifiable task sequences before implementation. |
 | `compile-brain` | Creates reviewable, optimized drafts from one explicitly selected Markdown artifact or user-provided text. |
 | `component-evidence` | Combines static importance, meditation usage inventories, and explicit local outcomes while excluding task content and personal data. |
+| `scout-shared-data-setup` | Prepares the shared storage required by evidence collection and knowledge capture. |
+| `scout-greeting-checkin` | Checks package readiness at session start and offers explicit maintenance actions. |
+| `git-workflow` | Previews a matching personal GitHub CLI account before repository operations. |
 | `flint-chart` | Creates and refines charts through the optional Flint MCP runtime. |
 | `big-idea` | Distills the central claim before summaries, PR titles, ADRs, slide titles, and executive framing. |
 | `security-and-hardening` | Adds a safety pass for auth, input handling, storage, integrations, and untrusted data. |
@@ -214,6 +231,9 @@ These skills are the highest-impact starting points:
 | You are about to implement a non-trivial change | `plan` |
 | You want to optimize a selected skill, instruction, prompt, agent, or brain contract | `compile-brain` |
 | You want evidence about a component's structural role and recorded usefulness | `component-evidence` |
+| You need shared storage for meditation or component evidence on a new device | `scout-shared-data-setup` |
+| You are starting a session and want package readiness checked | `scout-greeting-checkin` |
+| You need to access a GitHub repository with the correct account | `git-workflow` |
 | You want a chart from data | `chart-big-idea`, `chart-vocabulary`, `flint-chart`, and `render-verify` |
 | You want safer code around auth, input, storage, or integrations | `security-and-hardening` |
 | You need a concise stakeholder update | `status-reporting` |
@@ -278,6 +298,7 @@ Converted instructions do not become always-on automatically. Read them as suppo
 
 - `compile-brain`
 - `component-evidence`
+- `scout-shared-data-setup`
 - `meditation`
 - `scout-knowledge-base`
 - related `resources/instructions/` files

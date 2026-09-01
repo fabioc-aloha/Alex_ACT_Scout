@@ -28,6 +28,15 @@ Accept exactly one of these sources:
 
 Never infer source material from unrelated conversation context.
 
+## Shared Knowledge Gate
+
+Before designing a non-trivial or consequential reusable brain artifact, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas. Read only records whose
+signals or preconditions match the artifact, and treat them as context rather
+than authority. If unavailable, state that once and continue with the selected
+source; do not create a local fallback while compiling.
+
 ## Clarification Gate
 
 Before drafting, determine whether the selected material establishes a

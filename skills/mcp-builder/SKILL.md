@@ -37,6 +37,15 @@ Before building custom, check if Microsoft already provides one:
 
 ---
 
+## Shared Knowledge Gate
+
+Before planning, evaluating, or designing a non-trivial MCP integration, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas. Read only records whose
+signals or preconditions match the integration, and treat them as context rather
+than authority. If unavailable, state that once and continue with current
+evidence; do not create a local fallback while designing.
+
 ## Server Types
 
 | Type | Transport | Use Case | Example |

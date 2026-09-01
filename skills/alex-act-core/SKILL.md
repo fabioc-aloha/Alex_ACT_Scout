@@ -11,7 +11,8 @@ This repository converts Alex ACT Core into Scout's skill-folder format and
 adopts selected compatible capabilities. It includes:
 
 - 29 native skill folders copied from `.github/skills`.
-- 2 independently adopted skills: `compile-brain` and `component-evidence`.
+- 3 independently adopted skills: `compile-brain`, `component-evidence`, and
+  `scout-shared-data-setup`.
 - 1 package orientation skill named `alex-act-core`.
 - 14 instruction files attached as supporting resources under related skills.
 - 5 prompt files attached as supporting resources under related skills.

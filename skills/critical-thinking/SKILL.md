@@ -48,6 +48,25 @@ Use this skill at decision points, with intensity proportional to the stakes:
 
 ---
 
+## Shared Knowledge Gate
+
+Before forming a recommendation for non-trivial, repeated, or consequential
+work, consult [`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for
+relevant prior decisions, failure modes, procedures, and gotchas.
+
+1. Search the shared index using problem-specific terms.
+2. Read only records whose signals or preconditions match the current task.
+3. Treat records as evidence and context, not authority; verify whether their
+   conditions still hold.
+4. If the knowledge base is unavailable, state that once and continue with the
+   current evidence. Do not create a local fallback while solving.
+
+Skip this gate for trivial, isolated work. If shared storage needs first-time
+configuration, route to `scout-shared-data-setup` after the current task or
+when the user asks to enable it.
+
+---
+
 ## Discipline -1: Problem Framing (Frame Audit)
 
 Before the Materiality Gate, before any of the seven disciplines, before any solution attempt: **audit the frame**. The most expensive class of error is solving the wrong problem precisely (Mitroff & Featheringham 1974, Type III error). A flawless solution to the wrong question is still a wrong answer.

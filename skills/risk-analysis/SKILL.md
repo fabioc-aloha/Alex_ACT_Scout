@@ -13,6 +13,23 @@ description: >-
 
 Applied to curation work: accepting a bad skill is reversible (revert next patch). Shipping a broken release to consumers is expensive to undo.
 
+## Shared Knowledge Gate
+
+Before evaluating non-trivial, repeated, or consequential risk, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas.
+
+1. Search the shared index using the risk's problem-specific terms.
+2. Read only records whose signals or preconditions match the current risk.
+3. Treat records as evidence and context, not authority; verify whether their
+   conditions still hold.
+4. If the knowledge base is unavailable, state that once and continue with the
+   current evidence. Do not create a local fallback while assessing risk.
+
+Skip this gate for trivial, isolated work. If shared storage needs first-time
+configuration, route to `scout-shared-data-setup` after the current task or
+when the user asks to enable it.
+
 ## Risk Categories (Curation-Specific)
 
 | Category | Examples |

@@ -21,6 +21,16 @@ Status reports serve different audiences with different needs:
 - **Teams**: Details, dependencies, next steps
 - **Customers**: Value delivered, what's coming
 
+## Shared Knowledge Gate
+
+Before preparing a consequential stakeholder report containing risks,
+commitments, or decisions, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas. Read only records whose
+signals or preconditions match the report, and treat them as context rather than
+authority. If unavailable, state that once and continue with current evidence;
+do not create a local fallback while reporting.
+
 ## Report Templates
 
 ### Executive Summary (30 seconds)

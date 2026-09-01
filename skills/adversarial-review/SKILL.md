@@ -23,6 +23,23 @@ Methods for **structured skepticism** beyond self-critique.
 | Groupthink forming         | Assign devil's advocate role |
 | Before committing publicly | Stress-test the position     |
 
+## Shared Knowledge Gate
+
+Before reviewing a non-trivial, repeated, or consequential decision, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas.
+
+1. Search the shared index using the decision's problem-specific terms.
+2. Read only records whose signals or preconditions match the current review.
+3. Treat records as evidence and context, not authority; verify whether their
+   conditions still hold.
+4. If the knowledge base is unavailable, state that once and continue with the
+   current evidence. Do not create a local fallback while reviewing.
+
+Skip this gate for trivial, isolated reviews. If shared storage needs first-time
+configuration, route to `scout-shared-data-setup` after the current task or
+when the user asks to enable it.
+
 ## Adversarial Review Methods
 
 ### 1. Red Team / Blue Team

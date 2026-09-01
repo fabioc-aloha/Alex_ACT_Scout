@@ -41,6 +41,23 @@ Include, when relevant:
 
 If the task is code-related, include exact file paths, likely test targets, and verification steps.
 
+## Shared Knowledge Gate
+
+Before planning non-trivial, repeated, or consequential work, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas.
+
+1. Search the shared index using the task's problem-specific terms.
+2. Read only records whose signals or preconditions match the current work.
+3. Treat records as evidence and context, not authority; verify whether their
+   conditions still hold.
+4. If the knowledge base is unavailable, state that once and continue with the
+   current evidence. Do not create a local fallback while planning.
+
+Skip this gate for trivial, isolated work. If shared storage needs first-time
+configuration, route to `scout-shared-data-setup` after the current task or
+when the user asks to enable it.
+
 ## Save location
 
 When repository plan files are allowed, save the plan under the repo's `docs/` directory:

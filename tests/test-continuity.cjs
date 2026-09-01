@@ -15,18 +15,18 @@ function temporary(prefix) {
     return fs.mkdtempSync(path.join(os.tmpdir(), prefix));
 }
 
-test('Scout v2.0.2 release metadata and catalogs are publishable', () => {
+test('Scout v2.0.3 release metadata and catalogs are publishable', () => {
     const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
     const version = fs.readFileSync(path.join(root, 'VERSION'), 'utf8').trim();
     const changelog = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8');
     const catalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills.json'), 'utf8'));
     const visualCatalog = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills-visual.json'), 'utf8'));
 
-    assert.equal(packageJson.version, '2.0.2');
+    assert.equal(packageJson.version, '2.0.3');
     assert.equal(version, packageJson.version);
     assert.equal(packageJson.private, true);
-    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[2\.0\.0\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
-    assert.equal(catalog.length, 30);
+    assert.match(changelog, /## \[Unreleased\][\s\S]*## \[2\.0\.3\] - 2026-09-01[\s\S]*## \[2\.0\.2\] - 2026-08-31[\s\S]*## \[2\.0\.1\] - 2026-08-31[\s\S]*## \[2\.0\.0\] - 2026-08-31[\s\S]*## \[1\.0\.0\] - 2026-08-15/);
+    assert.equal(catalog.length, 32);
     assert.equal(visualCatalog.length, 6);
 });
 
@@ -90,6 +90,8 @@ test('Scout installer preserves continuity scripts in the installed skill payloa
         target, 'scout-knowledge-base', 'scripts', 'scout-knowledge-base.cjs')), true);
     assert.equal(fs.existsSync(path.join(
         target, 'component-evidence', 'scripts', 'component-evidence.cjs')), true);
+    assert.equal(fs.existsSync(path.join(
+        target, 'scout-shared-data-setup', 'scripts', 'scout-shared-data-setup.cjs')), true);
 });
 
 test('Scout installer removes retired message bus skills from an existing install', (t) => {
@@ -114,4 +116,54 @@ test('Scout catalog excludes retired message bus capabilities', () => {
 
     assert.equal(catalog.some((skill) => skill.name === 'scout-message-bus'), false);
     assert.equal(catalog.some((skill) => skill.name === 'scout-message-bus-heartbeat'), false);
+});
+
+test('decision workflows require a bounded shared knowledge consultation', () => {
+    const skills = [
+        ['skills', 'adversarial-review'],
+        ['skills', 'code-review'],
+        ['skills', 'compile-brain'],
+        ['skills', 'critical-thinking'],
+        ['skills', 'doc-hygiene'],
+        ['skills', 'ethical-reasoning'],
+        ['skills', 'markdown-sanitization-chain'],
+        ['skills', 'mcp-builder'],
+        ['skills', 'plan'],
+        ['skills', 'problem-framing-audit'],
+        ['skills', 'risk-analysis'],
+        ['skills', 'security-and-hardening'],
+        ['skills', 'spike'],
+        ['skills', 'status-reporting'],
+        ['skills', 'systematic-debugging'],
+        ['skills-visual', 'chart-big-idea'],
+        ['skills-visual', 'chart-vocabulary'],
+        ['skills-visual', 'flint-chart'],
+        ['skills-visual', 'render-verify'],
+    ];
+
+    for (const [library, skill] of skills) {
+        const content = fs.readFileSync(path.join(root, library, skill, 'SKILL.md'), 'utf8');
+        assert.match(content, /## Shared Knowledge Gate/);
+        assert.match(content, /scout-knowledge-base/);
+    }
+});
+
+test('meditation requests optional session compaction after capture', () => {
+    const meditation = fs.readFileSync(path.join(root, 'skills', 'meditation', 'SKILL.md'), 'utf8');
+
+    assert.match(meditation, /## Session Compaction/);
+    assert.match(meditation, /Do not compact automatically/);
+});
+
+test('greeting checkin manifest matches the core and visual catalogs', () => {
+    const manifest = JSON.parse(fs.readFileSync(path.join(
+        root, 'skills', 'scout-greeting-checkin', 'package-manifest.json'), 'utf8'));
+    const core = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills.json'), 'utf8'))
+        .map((entry) => entry.name).sort();
+    const visual = JSON.parse(fs.readFileSync(path.join(root, 'scout-skills-visual.json'), 'utf8'))
+        .map((entry) => entry.name).sort();
+
+    assert.equal(manifest.version, '2.0.3');
+    assert.deepEqual([...manifest.coreSkills].sort(), core);
+    assert.deepEqual([...manifest.visualSkills].sort(), visual);
 });

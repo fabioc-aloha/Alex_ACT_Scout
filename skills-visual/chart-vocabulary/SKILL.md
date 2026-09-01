@@ -10,6 +10,15 @@ description: >-
 
 Select chart types by analytical job, not visual novelty.
 
+## Shared Knowledge Gate
+
+Before selecting chart encodings or types for consequential analysis, consult
+[`scout-knowledge-base`](../../skills/scout-knowledge-base/SKILL.md) for
+relevant prior decisions, failure modes, procedures, and gotchas. Read only
+records whose signals or preconditions match the analysis, and treat them as
+context rather than authority. If unavailable, state that once and continue with
+the current evidence; do not create a local fallback while selecting a chart.
+
 ## Chart selection matrix
 
 | Task | Prefer | Avoid |

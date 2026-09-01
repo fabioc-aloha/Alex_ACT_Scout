@@ -20,6 +20,15 @@ Use before:
 - turning a table into a figure
 - reviewing whether a visual artifact communicates the intended point
 
+## Shared Knowledge Gate
+
+Before selecting a consequential chart claim, stance, or recommendation, consult
+[`scout-knowledge-base`](../../skills/scout-knowledge-base/SKILL.md) for
+relevant prior decisions, failure modes, procedures, and gotchas. Read only
+records whose signals or preconditions match the visual decision, and treat them
+as context rather than authority. If unavailable, state that once and continue
+with the current evidence; do not create a local fallback while framing.
+
 ## Output
 
 Produce a short chart brief:

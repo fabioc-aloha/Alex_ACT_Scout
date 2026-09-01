@@ -57,11 +57,12 @@ Do not preserve raw transcript or private source content.
    available tools; do not inventory similarly named skills from another
    package.
 6. Use only the configured component-evidence ledger. If it is not configured,
-   state that usage is unavailable; do not create or suggest an inferred local
-   fallback. Confirm each candidate appears in the configured `assessment.json`,
-   preview the exact component names, and apply only after the user explicitly
-   approves. The ledger records no task content, transcript, session ID, paths,
-   or personal data.
+   use [`scout-shared-data-setup`](../scout-shared-data-setup/SKILL.md) to
+   preview a user-selected synchronized root. Do not create or suggest an
+   inferred local fallback. Confirm each candidate appears in the configured
+   `assessment.json`, preview the exact component names, and apply only after
+   the user explicitly approves. The ledger records no task content, transcript,
+   session ID, paths, or personal data.
 7. Draft one Markdown record per lesson using the `scout-knowledge-base` template.
 8. Add or update the shared `knowledge-base\index.md`.
 
@@ -71,6 +72,16 @@ Use the `component-evidence` inventory command:
 node <component-evidence>/scripts/component-evidence.cjs inventory --components <skill-name,skill-name>
 node <component-evidence>/scripts/component-evidence.cjs inventory --components <skill-name,skill-name> --apply
 ```
+
+## Session Compaction
+
+After all approved inventory and knowledge-base work is complete, ask whether
+the user wants to compact the current session. Explain that compaction reduces
+conversation context while preserving the durable lessons already captured.
+
+Do not compact automatically. Only call the host session-compaction capability
+after the user explicitly approves. If the user declines, finish meditation
+without further action.
 
 ## Output format
 

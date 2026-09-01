@@ -12,6 +12,10 @@ Use this skill when the user wants to preserve important session experience befo
 This file-based knowledge base stores durable lessons that multiple Scout
 instances can read.
 
+For first-time shared storage setup on a device, use
+[`scout-shared-data-setup`](../scout-shared-data-setup/SKILL.md) to preview and
+approve a user-selected synchronized root before using the commands below.
+
 ## Command surface
 
 ```text

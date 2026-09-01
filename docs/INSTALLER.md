@@ -189,7 +189,7 @@ APPLY: installing skills into ...
 Installed skill: act-tenets
 Installed skill: alex-act-core
 ...
-Installed 30 skill(s); skipped 0 existing skill(s); removed 0 stale skill(s). Restart Scout to refresh the skill list.
+Installed 32 skill(s); skipped 0 existing skill(s); removed 0 stale skill(s). Restart Scout to refresh the skill list.
 ```
 
 Typical dry run:
@@ -198,7 +198,7 @@ Typical dry run:
 DRY RUN: no files will be changed. Re-run with -Apply to install.
 Would install skill: act-tenets
 ...
-Dry run complete: would install/overwrite 30 skill(s), skip 0 existing skill(s), remove 0 stale skill(s). Re-run with -Apply to make changes.
+Dry run complete: would install/overwrite 32 skill(s), skip 0 existing skill(s), remove 0 stale skill(s). Re-run with -Apply to make changes.
 ```
 
 Typical repeat install without overwrite in apply mode:
@@ -206,7 +206,7 @@ Typical repeat install without overwrite in apply mode:
 ```text
 Skipping existing skill: act-tenets (use -Force to overwrite)
 ...
-Installed 0 skill(s); skipped 30 existing skill(s); removed 0 stale skill(s). Restart Scout to refresh the skill list.
+Installed 0 skill(s); skipped 32 existing skill(s); removed 0 stale skill(s). Restart Scout to refresh the skill list.
 ```
 
 On macOS/Linux, the skip hint says `use --force to overwrite`.

@@ -28,6 +28,15 @@ Prefer `render_chart` when the chart must be visible in the conversation. In cur
 
 Use `create_chart_view` only when the user specifically asks to test interactive chart views or when the host UI is known to support MCP app views.
 
+## Shared Knowledge Gate
+
+Before creating a non-trivial or consequential chart, consult
+[`scout-knowledge-base`](../../skills/scout-knowledge-base/SKILL.md) for
+relevant prior decisions, failure modes, procedures, and gotchas. Read only
+records whose signals or preconditions match the chart, and treat them as context
+rather than authority. If unavailable, state that once and continue with the
+current data; do not create a local fallback while authoring.
+
 ## Workflow
 
 1. **Frame the claim.** Use `chart-big-idea` discipline before chart selection. A chart title should state the finding, not just name the metric.

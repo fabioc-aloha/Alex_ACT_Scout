@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.3] - 2026-09-01
+
+### Added
+
+- Added `scout-greeting-checkin`, a read-only session-start companion to
+  meditation that checks package setup, shared data, Flint, and available
+  releases before offering explicit maintenance actions.
+- Added `scout-shared-data-setup`, an approval-first bootstrap for a
+  user-selected synchronized evidence ledger and shared knowledge base.
+
+### Changed
+
+- Added preview-first GitHub CLI account routing to `git-workflow`. Personal
+  repository owners are matched to configured account names; organization-owned
+  repositories require explicit account selection.
+- Added non-blocking shared knowledge consultation gates to decision, planning,
+  investigation, review, security, MCP, reporting, and visual-analysis
+  workflows.
+
 ## [2.0.2] - 2026-08-31
 
 ### Changed

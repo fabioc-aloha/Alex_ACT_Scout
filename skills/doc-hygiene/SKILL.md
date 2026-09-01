@@ -11,6 +11,16 @@ description: >-
 
 > Prevent documentation drift through structural rules — not manual vigilance.
 
+## Shared Knowledge Gate
+
+Before a non-trivial, repeated, or consequential documentation audit or
+architecture decision, consult
+[`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant prior
+decisions, failure modes, procedures, and gotchas. Read only records whose
+signals or preconditions match the work, and treat them as context rather than
+authority. If unavailable, state that once and continue with current evidence;
+do not create a local fallback while auditing.
+
 ## The Count Problem
 
 Hardcoded counts (e.g., "109 skills", "28 instructions", "6 agents") in prose become stale within days during active development. Every count is a future bug.

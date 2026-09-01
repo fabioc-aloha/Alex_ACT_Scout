@@ -10,18 +10,18 @@ selected compatible capabilities from adjacent Alex ACT projects. It also owns
 Scout-native shared knowledge capture. It is a curated package, not a
 byte-for-byte copy of a source plugin.
 
-**Current release: `v2.0.2`.** The package ships 30 core skills, six optional
+**Current release: `v2.0.3`.** The package ships 32 core skills, six optional
 visual skills, preview-first installers, and tested shared-continuity scripts.
-This release is the volunteer-test baseline; collect and review user feedback
-before changing skill behavior.
+Collect and review user feedback before changing skill behavior.
 
 ## What you get
 
 | Content | Count | Location |
 | --- | ---: | --- |
-| Core workflow skills | 27 | `skills/<skill-name>/SKILL.md` |
+| Core workflow skills | 28 | `skills/<skill-name>/SKILL.md` |
 | Adopted Brain Compiler skill | 1 | `skills/compile-brain/SKILL.md` |
 | Component evidence skill | 1 | `skills/component-evidence/SKILL.md` |
+| Shared-data setup skill | 1 | `skills/scout-shared-data-setup/SKILL.md` |
 | Package orientation skill | 1 | `skills/alex-act-core/SKILL.md` |
 | Optional visual add-on skills | 6 | `skills-visual/<skill-name>/SKILL.md` |
 | Complementary instructions | 14 | `skills/<related-skill>/resources/instructions/` |
@@ -40,6 +40,8 @@ Use:
 
 - `scout-knowledge-base` for durable shared lessons and cross-instance knowledge capture.
 - `meditation` for end-of-session lesson extraction into the shared knowledge base.
+- `scout-shared-data-setup` to initialize shared evidence and knowledge-base storage on a new device.
+- `scout-greeting-checkin` to inspect package readiness at the start of a session.
 - [Knowledge base guide](docs/KNOWLEDGE-BASE.md) for the shared lesson-capture process.
 
 ### Flint charts
@@ -70,6 +72,9 @@ Other high-impact skills worth calling out:
 | `big-idea` | Distills the central claim before summaries, PR titles, ADRs, slide titles, and executive framing. |
 | `compile-brain` | Produces review-first, execution-ready drafts for selected skills, instructions, prompts, agents, or brain contracts. |
 | `component-evidence` | Combines structural importance, meditation inventories, and explicit local outcome records without retaining task content. |
+| `scout-shared-data-setup` | Configures the approval-first shared storage required by evidence and knowledge capture. |
+| `scout-greeting-checkin` | Checks package readiness at session start and offers, but never applies, maintenance. |
+| `git-workflow` | Routes GitHub CLI access to a matching personal account before repository operations. |
 | `flint-chart` | Creates data-driven charts with the optional Flint MCP runtime. |
 | `security-and-hardening` | Adds a safety pass for auth, input handling, storage, integrations, and untrusted data. |
 | `doc-hygiene` | Reduces stale docs, wrong counts, dead links, and documentation drift. |
@@ -177,6 +182,8 @@ Use these as starting points. Replace the bracketed text with your task context.
 | `code-review` | `Use code-review on the current changes. Focus on correctness, security, edge cases, and test coverage; cite evidence for each finding.` |
 | `doc-hygiene` | `Use doc-hygiene to review [README or document] against the current project. Find stale claims, broken links, duplicate guidance, and missing adoption information.` |
 | `compile-brain` | `Use compile-brain to improve [explicit path to SKILL.md, instruction, prompt, or agent]. Show the complete draft and explain material changes before writing anything.` |
+| `git-workflow` | `Use git-workflow to confirm the GitHub CLI account before accessing [owner/repository]. Switch only after showing the selected account and receiving approval.` |
+| `scout-greeting-checkin` | `Use scout-greeting-checkin to check the Alex ACT Scout installation, shared data, Flint, and available releases before we begin.` |
 | `meditation` | `Use meditation to identify reusable, privacy-safe lessons from this session and inventory the Alex ACT Scout skills explicitly used.` |
 
 ## Optional visual add-on
@@ -294,6 +301,9 @@ The source `browser-tools` and `platform-awareness` skills are omitted from this
 | Plan non-trivial work before coding | `plan` |
 | Optimize a selected skill, instruction, prompt, or agent | `compile-brain` |
 | Measure structural importance and recorded usefulness | `component-evidence` |
+| Configure shared evidence and knowledge-base storage | `scout-shared-data-setup` |
+| Check package readiness at the start of a session | `scout-greeting-checkin` |
+| Access a GitHub repository with the correct account | `git-workflow` |
 | Create and verify a data-driven chart | `chart-big-idea`, `chart-vocabulary`, `flint-chart`, and `render-verify` |
 | Write or repair markdown docs | `doc-hygiene`, `lint-clean-markdown`, or `markdown-mermaid` |
 | Produce stakeholder updates | `status-reporting` or `communication-craft` |

@@ -53,6 +53,24 @@ Use for ANY technical issue:
 
 You MUST complete each phase before proceeding to the next.
 
+## Shared Knowledge Gate
+
+Before beginning a non-trivial, recurring, or high-impact investigation,
+consult [`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for
+relevant prior failure modes, procedures, decisions, and gotchas.
+
+1. Search the shared index using error terms, affected components, or the
+   problem pattern.
+2. Read only records whose signals or preconditions match the current issue.
+3. Treat records as evidence and context, not authority; verify whether their
+   conditions still hold.
+4. If the knowledge base is unavailable, state that once and continue with the
+   current evidence. Do not create a local fallback while debugging.
+
+Skip this gate for trivial, isolated issues. If shared storage needs first-time
+configuration, route to `scout-shared-data-setup` after the current task or
+when the user asks to enable it.
+
 ### Phase 1: Root Cause Investigation
 
 **BEFORE attempting ANY fix:**

@@ -20,6 +20,15 @@ description: >-
 
 Markdown renderers (marked.js, markdown-it) convert markdown to HTML but **do not sanitize it**. Diagram renderers (Mermaid, PlantUML) execute after sanitizers run, which can re-introduce attack vectors. Order matters critically.
 
+## Shared Knowledge Gate
+
+Before designing or reviewing a non-trivial markdown-rendering security boundary,
+consult [`scout-knowledge-base`](../scout-knowledge-base/SKILL.md) for relevant
+prior failure modes, procedures, decisions, and gotchas. Read only records
+whose signals or preconditions match the boundary, and treat them as context
+rather than authority. If unavailable, state that once and continue with the
+current threat model; do not create a local fallback while hardening.
+
 ## The Rule
 
 **Always: marked.js → DOMPurify → Mermaid (post-render).**
