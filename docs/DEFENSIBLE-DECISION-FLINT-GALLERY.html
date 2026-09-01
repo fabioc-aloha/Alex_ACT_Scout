@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defensible Decision Flint chart gallery</title>
+  <link rel="icon" href="data:,">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 32px;
+    }
+
+    .shell {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    .panel,
+    .card,
+    .spotlight {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      position: relative;
+      overflow: hidden;
+      padding: 36px;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--cp-accent-soft);
+      pointer-events: none;
+    }
+
+    .hero-copy > * {
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--cp-accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 4px;
+      background: var(--cp-accent);
+      border-radius: 0.625rem;
+    }
+
+    h1 {
+      max-width: 880px;
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+    }
+
+    .lede {
+      max-width: 850px;
+      margin: 20px 0 0;
+      color: var(--cp-text-muted);
+      font-size: 1.08rem;
+      line-height: 1.62;
+    }
+
+    .controls {
+      padding: 24px;
+    }
+
+    .controls h2,
+    .section-title,
+    .spotlight-title {
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .controls p {
+      margin: 8px 0 20px;
+      color: var(--cp-text-muted);
+      line-height: 1.5;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--cp-text-muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    select {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 12px;
+      color: var(--cp-text);
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 12px;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--cp-text-muted);
+      font-size: 0.8rem;
+    }
+
+    .framework {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .framework-card {
+      padding: 18px;
+    }
+
+    .framework-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .framework-card p,
+    .industry li,
+    .card p,
+    .spotlight-copy,
+    .guidance span {
+      color: var(--cp-text-muted);
+      line-height: 1.5;
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .industry {
+      padding: 16px;
+    }
+
+    .industry summary {
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .industry ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .spotlight {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 24px;
+      align-items: stretch;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .spotlight-chart {
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: var(--cp-bg-elevated);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+    }
+
+    .spotlight-chart svg,
+    .card-chart svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .spotlight-info {
+      display: grid;
+      align-content: center;
+      gap: 14px;
+      padding: 8px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 6px 10px;
+      color: var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .spotlight-title {
+      font-size: clamp(1.7rem, 3vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .guidance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .guidance {
+      padding: 12px;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+    }
+
+    .guidance strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 28px 0 14px;
+    }
+
+    .gallery-header p {
+      max-width: 720px;
+      margin: 8px 0 0;
+      color: var(--cp-text-muted);
+      line-height: 1.5;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      display: grid;
+      grid-template-rows: 265px auto;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .card:hover,
+    .card.is-active {
+      transform: translateY(-2px);
+      border-color: var(--cp-accent);
+    }
+
+    .card.is-avoid {
+      border-color: var(--cp-danger);
+    }
+
+    .card-chart {
+      min-height: 265px;
+      background: var(--cp-bg-elevated);
+      border-bottom: 1px solid var(--cp-border);
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--cp-text-muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.12rem;
+      line-height: 1.25;
+    }
+
+    .card p {
+      margin: 10px 0 0;
+    }
+
+    .avoid-banner {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      color: var(--cp-danger);
+      background: var(--cp-panel-strong);
+      border: 2px solid var(--cp-danger);
+      border-radius: 0.625rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: var(--cp-shadow);
+    }
+
+    .avoid-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      color: var(--cp-accent-fg);
+      background: var(--cp-danger);
+      border-radius: 999px;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .spotlight {
+        grid-template-columns: 1fr;
+      }
+
+      .framework,
+      .industry-grid,
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 16px;
+      }
+
+      .hero-copy,
+      .controls,
+      .spotlight {
+        padding: 20px;
+      }
+
+      .framework,
+      .industry-grid,
+      .gallery,
+      .guidance-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="shell">
+      <section class="hero">
+        <div class="panel hero-copy">
+          <div class="eyebrow">Defensible Decision gallery</div>
+          <h1>Start with the question, then choose the chart.</h1>
+          <p class="lede">
+            A didactic Flint gallery for choosing visualizations by analytical job:
+            comparison, time, distribution, relationship, composition, flow, target status,
+            and geography. The theme selector redraws the entire gallery in the selected Flint style.
+          </p>
+        </div>
+        <aside class="panel controls">
+          <h2>Gallery controls</h2>
+          <p>Apply a Flint theme across the whole gallery, then filter by the story your data needs to tell.</p>
+          <div class="field">
+            <label for="theme-select">Flint theme</label>
+            <select id="theme-select"></select>
+          </div>
+          <div class="field">
+            <label for="question-select">Data question</label>
+            <select id="question-select">
+              <option value="all">All questions</option>
+              <option value="compare">Ranking or comparing categories</option>
+              <option value="time">Change over time</option>
+              <option value="distribution">How values are spread</option>
+              <option value="relationship">Correlation or relationship</option>
+              <option value="composition">Part of a whole</option>
+              <option value="flow">Flow between stages</option>
+              <option value="target">Targets, compliance, or status</option>
+              <option value="geo">Geography or location</option>
+              <option value="avoid">Avoid by default</option>
+            </select>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>8</strong><span>question types</span></div>
+            <div class="stat"><strong>32</strong><span>chart choices</span></div>
+            <div class="stat"><strong>2</strong><span>avoid cards</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="framework">
+        <div class="panel framework-card"><h3>Ranking or comparing categories?</h3><p>Use bars, lollipops, Pareto-style ranking, or grouped bars. Horizontal bars help when labels are long.</p></div>
+        <div class="panel framework-card"><h3>Change over time?</h3><p>Use a line chart for trend focus, an area chart for volume, or a Gantt chart when duration is the point.</p></div>
+        <div class="panel framework-card"><h3>How are values spread?</h3><p>Use histograms for shape, box plots for compact summaries, and violin plots when comparing distribution shapes.</p></div>
+        <div class="panel framework-card"><h3>Correlation between variables?</h3><p>Use scatter for two variables, bubble for three, regression for a fitted relationship, and network charts for dependencies.</p></div>
+        <div class="panel framework-card"><h3>Part of a whole?</h3><p>Use treemaps for many items, stacked bars for comparable totals, sunbursts for hierarchy, and donut only with very few slices.</p></div>
+        <div class="panel framework-card"><h3>Flow between stages?</h3><p>Use Sankey diagrams for weighted flows, funnels for stage drop-off, and trees for parent-child structure.</p></div>
+      </section>
+
+      <section class="industry-grid">
+        <details class="panel industry"><summary>Government and defense</summary><ul><li>Budget allocation: treemap, waterfall.</li><li>Program milestones: Gantt, line.</li><li>Compliance metrics: gauge, bullet.</li><li>Resource distribution: Sankey, stacked bar.</li><li>Risk assessment: heatmap, bubble.</li></ul></details>
+        <details class="panel industry"><summary>Technology and engineering</summary><ul><li>System performance: line, control-style trend, gauge.</li><li>Defect analysis: Pareto, histogram.</li><li>Architecture dependencies: network graph, Sankey.</li><li>Release metrics: combo, bullet.</li><li>Process capability: control chart, capability view.</li></ul></details>
+        <details class="panel industry"><summary>Finance and audit</summary><ul><li>Revenue breakdown: waterfall, treemap.</li><li>Variance analysis: waterfall, bullet.</li><li>Portfolio allocation: donut, treemap, bubble.</li><li>Trend forecasting: line, area.</li><li>Audit findings: Pareto, horizontal bar.</li></ul></details>
+        <details class="panel industry"><summary>Higher education</summary><ul><li>Enrollment trends: line, area, funnel.</li><li>Survey results: Likert-style bars, NPS gauge.</li><li>Grant distribution: treemap, sunburst.</li><li>Student outcomes: Sankey, grouped bar.</li><li>Research impact: scatter, bubble.</li></ul></details>
+        <details class="panel industry"><summary>Healthcare</summary><ul><li>Patient outcomes: control-style trend, box plot.</li><li>Resource utilization: heatmap, stacked bar.</li><li>Wait times: histogram, run chart.</li><li>Treatment pathways: Sankey, funnel.</li><li>Quality indicators: gauge, bullet, Pareto.</li></ul></details>
+        <details class="panel industry"><summary>Operations and projects</summary><ul><li>Pipeline and funnel: funnel, Sankey.</li><li>Process efficiency: control-style trend, run chart.</li><li>Resource allocation: treemap, stacked bar.</li><li>Milestone tracking: bullet, gauge.</li><li>Root cause: Pareto, decomposition tree.</li></ul></details>
+        <details class="panel industry"><summary>Sales and marketing</summary><ul><li>Sales pipeline: funnel, Sankey.</li><li>Campaign performance: grouped bar, combo.</li><li>Customer sentiment: sentiment summary, not word cloud.</li><li>Market segments: treemap, bubble.</li><li>Conversion drivers: key influencers, Pareto.</li></ul></details>
+        <details class="panel industry"><summary>HR and people operations</summary><ul><li>Org structure: hierarchy tree, sunburst.</li><li>Headcount trends: stacked area, line.</li><li>Employee surveys: Likert-style bars, sentiment summary.</li><li>Attrition analysis: Sankey, key influencers.</li><li>Compensation: box plot, scatter.</li></ul></details>
+      </section>
+
+      <section class="spotlight">
+        <div class="spotlight-chart" id="spotlight-chart"></div>
+        <div class="spotlight-info">
+          <div class="pill-row"><span class="pill" id="spotlight-question"></span><span class="pill" id="spotlight-theme"></span></div>
+          <h2 class="spotlight-title" id="spotlight-title"></h2>
+          <p class="spotlight-copy" id="spotlight-copy"></p>
+          <div class="guidance-grid">
+            <div class="guidance"><strong>Use when</strong><span id="use-when"></span></div>
+            <div class="guidance"><strong>Avoid when</strong><span id="avoid-when"></span></div>
+            <div class="guidance"><strong>Accessibility</strong><span id="accessibility"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="gallery-header">
+        <div><h2 class="section-title">Chart choices</h2><p>Click any card to inspect when it is defensible. Cards marked with a red cross are included because people ask for them, not because they should be the default.</p></div>
+      </div>
+      <section class="gallery" id="gallery"></section>
+    </div>
+  </main>
+
+  <script>
+    const THEMES = {
+      economist: { label: "The Economist", bg: "#ffffff", text: "#1f2328", muted: "#57606a", grid: "#d8dee4", accent: "#e3120b", colors: ["#0b78a5", "#46b8c8", "#f2b632", "#d95f02", "#6a4c93", "#72b01d"] },
+      nyt: { label: "New York Times", bg: "#ffffff", text: "#111111", muted: "#666666", grid: "#d9d9d9", accent: "#d0021b", colors: ["#d62728", "#2f5597", "#8c564b", "#9467bd", "#2ca02c", "#ff7f0e"] },
+      swiss: { label: "Swiss", bg: "#f8f4eb", text: "#111111", muted: "#5f5f5f", grid: "#cfc8bc", accent: "#e10600", colors: ["#111111", "#e10600", "#666666", "#b7b7b7", "#f0c808", "#2f80ed"] },
+      nature: { label: "Nature", bg: "#ffffff", text: "#222222", muted: "#666666", grid: "#e2e2e2", accent: "#0072b2", colors: ["#0072b2", "#009e73", "#d55e00", "#cc79a7", "#f0e442", "#56b4e9"] },
+      mckinsey: { label: "McKinsey", bg: "#ffffff", text: "#0f172a", muted: "#64748b", grid: "#dbe3ee", accent: "#2f5fb3", colors: ["#2f5fb3", "#86a8e7", "#b7c9ef", "#d6e0f7", "#7c8da6", "#f59e0b"] },
+      datawrapper: { label: "Datawrapper", bg: "#ffffff", text: "#222222", muted: "#666666", grid: "#dddddd", accent: "#18a1cd", colors: ["#18a1cd", "#f2b701", "#b6b6b6", "#ff7f0e", "#1f77b4", "#2ca02c"] },
+      powerbi: { label: "Power BI", bg: "#111111", text: "#f5f5f5", muted: "#bdbdbd", grid: "#2d2d2d", accent: "#f2c811", colors: ["#f2c811", "#118dff", "#12239e", "#e66c37", "#6b007b", "#e044a7"] },
+      "powerbi-light": { label: "Power BI light", bg: "#ffffff", text: "#252423", muted: "#605e5c", grid: "#e1dfdd", accent: "#118dff", colors: ["#118dff", "#12239e", "#e66c37", "#6b007b", "#e044a7", "#744ec2"] },
+      pop: { label: "Pop", bg: "#fff000", text: "#111111", muted: "#303030", grid: "#111111", accent: "#ff1493", colors: ["#ff1493", "#00d5ff", "#ff5c00", "#00c853", "#7c4dff", "#111111"] },
+      cartoon: { label: "Cartoon", bg: "#fff8e7", text: "#2d2a26", muted: "#665c4f", grid: "#d6c7aa", accent: "#2b6cb0", colors: ["#2b6cb0", "#f59e0b", "#ef4444", "#22c55e", "#a855f7", "#06b6d4"] }
+    };
+
+    const CHARTS = [
+      ["bar", "Bar chart", "Ranking or comparing categories", "compare", "Use for 2-15 categories with clear labels.", "Categories are actually time periods.", "Sort intentionally and label values directly.", "bar"],
+      ["horizontal-bar", "Horizontal bar", "Long labels and ranked lists", "compare", "Use when labels are too long for a vertical axis.", "Order is temporal.", "Keep category labels close to bars.", "hbar"],
+      ["grouped-bar", "Grouped bar", "Comparing categories across groups", "compare", "Use for side-by-side group comparison.", "Too many series create legend fatigue.", "Limit colors and add direct labels.", "grouped"],
+      ["pareto", "Pareto chart", "Finding the vital few", "compare", "Use for root-cause ranking and cumulative share.", "The categories are not mutually exclusive.", "Label the cumulative threshold.", "pareto"],
+      ["lollipop", "Lollipop chart", "Lightweight ranking", "compare", "Use when bars feel too heavy.", "Readers need area magnitude.", "Keep dots large and labels close.", "lollipop"],
+      ["line", "Line chart", "Trend focus over time", "time", "Use when slope and direction matter.", "The x-axis is unordered.", "Label endpoints and important inflections.", "line"],
+      ["area", "Area chart", "Volume over time", "time", "Use when total magnitude matters with the trend.", "Stacking hides exact comparison.", "Avoid unnecessary opacity layering.", "area"],
+      ["sparkline", "Sparkline", "Tiny inline trend", "time", "Use inside status tables or KPI rows.", "The chart must stand alone.", "Pair with a current value and direction.", "spark"],
+      ["gantt", "Gantt chart", "Schedule and duration", "time", "Use for phases, milestones, and dependencies.", "The task list is unstable or speculative.", "Use direct task labels, not only color.", "gantt"],
+      ["histogram", "Histogram", "Distribution shape", "distribution", "Use to show spread, skew, and concentration.", "You need exact individual values.", "Explain bin size.", "hist"],
+      ["boxplot", "Box plot", "Compact distribution summary", "distribution", "Use for median, quartiles, and outliers.", "Your audience will not understand quartiles.", "Annotate median and outliers.", "box"],
+      ["violin", "Violin plot", "Distribution shape by group", "distribution", "Use when shape differences matter.", "Sample size is too small.", "Explain density and avoid decorative symmetry.", "violin"],
+      ["strip", "Strip plot", "Individual observations", "distribution", "Use when every point should remain visible.", "There are thousands of points.", "Add jitter carefully and label groups.", "strip"],
+      ["scatter", "Scatter plot", "Correlation between two variables", "relationship", "Use for association, clusters, and outliers.", "One variable is categorical.", "Annotate important points.", "scatter"],
+      ["bubble", "Bubble chart", "Three-variable relationship", "relationship", "Use when point size adds a real third measure.", "Exact size comparison is required.", "Add a size legend and avoid tiny bubbles.", "bubble"],
+      ["regression", "Regression", "Relationship with trend line", "relationship", "Use when the fitted direction is the claim.", "The relationship is non-linear or weak.", "State the model limits.", "regression"],
+      ["heatmap", "Heatmap", "Matrix intensity", "relationship", "Use for two categorical dimensions and one measure.", "Exact comparison is the priority.", "Use text labels for important cells.", "heat"],
+      ["donut", "Donut", "Small part-to-whole with total KPI", "composition", "Use only for a few slices and a meaningful total.", "There are many categories or small differences.", "Direct-label slices; do not rely on legend color.", "donut"],
+      ["treemap", "Treemap", "Many parts of a whole", "composition", "Use for hierarchical or many-item composition.", "Precise ranking matters more than structure.", "Label large areas and group tiny leaves.", "treemap"],
+      ["stacked-bar", "Stacked bar", "Totals plus mix", "composition", "Use when both total and composition matter.", "You need exact segment comparison across bars.", "Prefer direct labels for key segments.", "stacked"],
+      ["sunburst", "Sunburst", "Hierarchical composition", "composition", "Use for nested part-to-whole structure.", "The hierarchy is shallow or labels are long.", "Provide hierarchy labels outside the rings.", "sunburst"],
+      ["waterfall", "Waterfall", "Bridge from start to finish", "flow", "Use for additive positive and negative drivers.", "Drivers are not additive.", "Clearly mark start, end, and negative values.", "waterfall"],
+      ["sankey", "Sankey", "Flow between stages", "flow", "Use for weighted source-to-target movement.", "Flows are uncertain or too numerous.", "Label the largest paths directly.", "sankey"],
+      ["funnel", "Funnel", "Stage drop-off", "flow", "Use for pipeline, conversion, and narrowing processes.", "Stages can loop or branch.", "Show denominators and conversion rates.", "funnel"],
+      ["network", "Network graph", "Dependencies and relationships", "flow", "Use when links are the story.", "A table would communicate more clearly.", "Label hubs and avoid hairball layouts.", "network"],
+      ["bullet", "Bullet chart", "Actual versus target", "target", "Use for KPI progress in compact space.", "You need historical explanation.", "Show target value as text.", "bullet"],
+      ["gauge", "Gauge", "Single status indicator", "target", "Use sparingly for one familiar operational metric.", "Screen space is scarce or comparisons matter.", "Do not rely on red/yellow/green alone.", "gauge"],
+      ["kpi", "KPI card", "One number with context", "target", "Use when the number itself is the visual.", "The reader needs distribution or trend.", "Include unit, target, and period.", "kpi"],
+      ["choropleth", "Choropleth", "Regional intensity", "geo", "Use when geography changes interpretation.", "Population size drives the pattern.", "Normalize rates and label key regions.", "map"],
+      ["point-map", "Point map", "Locations and magnitudes", "geo", "Use when exact locations matter.", "Location is decorative only.", "Size and color need legends.", "pointmap"],
+      ["pie", "Pie chart", "Avoid by default", "avoid", "Use a bar chart unless the part-to-whole story is obvious.", "Almost always when slices must be compared.", "Readers compare lengths more accurately than angles.", "pie", true],
+      ["wordcloud", "Word cloud", "Avoid by default", "avoid", "Use a ranked bar chart or sentiment summary instead.", "Almost always for decision-making.", "Word area and placement distort importance.", "wordcloud", true]
+    ].map(([id, name, story, question, use, avoid, access, render, avoidCard]) => ({ id, name, story, question, use, avoid, access, render, avoidCard: Boolean(avoidCard) }));
+
+    const selectTheme = document.getElementById("theme-select");
+    const selectQuestion = document.getElementById("question-select");
+    const gallery = document.getElementById("gallery");
+    const spotlightChart = document.getElementById("spotlight-chart");
+    const spotlightTitle = document.getElementById("spotlight-title");
+    const spotlightCopy = document.getElementById("spotlight-copy");
+    const spotlightQuestion = document.getElementById("spotlight-question");
+    const spotlightTheme = document.getElementById("spotlight-theme");
+    const useWhen = document.getElementById("use-when");
+    const avoidWhen = document.getElementById("avoid-when");
+    const accessibility = document.getElementById("accessibility");
+    let activeTheme = "economist";
+    let activeQuestion = "all";
+    let activeId = CHARTS[0].id;
+
+    function esc(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" }[char]));
+    }
+
+    function svg(chart, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 320;
+      const body = renderChart(chart.render, theme, width, height);
+      const cross = chart.avoidCard ? `<g transform="translate(${width - 86}, 26)"><circle cx="30" cy="30" r="30" fill="var(--cp-danger)"></circle><line x1="14" y1="14" x2="46" y2="46" stroke="var(--cp-accent-fg)" stroke-width="9" stroke-linecap="round"></line><line x1="46" y1="14" x2="14" y2="46" stroke="var(--cp-accent-fg)" stroke-width="9" stroke-linecap="round"></line></g>` : "";
+      return `<svg viewBox="0 0 ${width} ${height}" role="img" xmlns="http://www.w3.org/2000/svg"><rect width="${width}" height="${height}" rx="16" fill="${theme.bg}"></rect><text x="28" y="36" fill="${theme.text}" font-size="18" font-weight="800">${esc(chart.name)}</text><text x="28" y="58" fill="${theme.muted}" font-size="12">${esc(chart.story)}</text><line x1="28" y1="74" x2="${width - 28}" y2="74" stroke="${theme.grid}"></line>${body}${cross}</svg>`;
+    }
+
+    function renderChart(kind, t, w, h) {
+      const x0 = 56, y0 = 92, cw = w - 100, ch = h - 138, base = y0 + ch;
+      const bar = (x, y, bw, bh, c) => `<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="4" fill="${c}"></rect>`;
+      const grid = () => [0, .25, .5, .75, 1].map((p) => `<line x1="${x0}" y1="${base - ch * p}" x2="${x0 + cw}" y2="${base - ch * p}" stroke="${t.grid}"></line>`).join("");
+      const bars = [44, 68, 53, 81, 62];
+      if (kind === "bar") return grid() + bars.map((v, i) => bar(x0 + i * cw / 5 + 12, base - ch * v / 100, cw / 7, ch * v / 100, t.colors[i])).join("");
+      if (kind === "hbar") return bars.map((v, i) => `<text x="36" y="${112 + i * 36}" fill="${t.muted}" font-size="12">Item ${i + 1}</text>${bar(92, 98 + i * 36, cw * v / 100, 20, t.colors[i])}`).join("");
+      if (kind === "grouped") return grid() + [0,1,2,3].map((g) => [0,1,2].map((s) => { const v = [42,28,35,55,41,47,68,57,52,86,73,61][g * 3 + s]; return bar(x0 + g * cw / 4 + s * 18 + 20, base - ch * v / 95, 14, ch * v / 95, t.colors[s]); }).join("")).join("");
+      if (kind === "pareto") return grid() + bars.sort((a,b)=>b-a).map((v, i) => bar(x0 + i * cw / 5 + 14, base - ch * v / 100, cw / 8, ch * v / 100, t.colors[0])).join("") + `<polyline points="${bars.map((v,i)=>`${x0 + i*cw/5+28},${base - ch*(.25+i*.14)}`).join(" ")}" fill="none" stroke="${t.accent}" stroke-width="3"></polyline>`;
+      if (kind === "lollipop") return bars.map((v, i) => `<line x1="110" y1="${110+i*36}" x2="${110+cw*v/100}" y2="${110+i*36}" stroke="${t.grid}" stroke-width="5"></line><circle cx="${110+cw*v/100}" cy="${110+i*36}" r="8" fill="${t.colors[i]}"></circle>`).join("");
+      if (["line","spark","regression"].includes(kind)) return grid() + `<polyline points="60,245 145,220 230,190 315,170 400,130 485,105" fill="none" stroke="${t.colors[0]}" stroke-width="${kind==="spark"?5:3}" stroke-linecap="round"></polyline>${kind==="regression"?`<line x1="68" y1="250" x2="480" y2="110" stroke="${t.accent}" stroke-width="2" stroke-dasharray="8 6"></line>`:""}`;
+      if (kind === "area") return grid() + `<polygon points="60,245 60,132 145,148 230,170 315,188 400,214 485,228 485,245" fill="${t.colors[0]}" opacity=".78"></polygon>`;
+      if (kind === "gantt") return ["Plan","Build","Test","Launch"].map((label,i)=>`<text x="42" y="${114+i*42}" fill="${t.muted}" font-size="12">${label}</text>${bar(130+i*42,100+i*42,180-i*22,22,t.colors[i])}`).join("");
+      if (kind === "hist") return grid() + [1,2,3,3,5,2,2,2,2].map((v,i)=>bar(x0+i*cw/9+4,base-ch*v/6,cw/11,ch*v/6,t.colors[0])).join("");
+      if (kind === "box") return [0,1,2,3].map((i)=>{ const x=100+i*90; return `<line x1="${x}" y1="128" x2="${x}" y2="235" stroke="${t.text}" stroke-width="2"></line><rect x="${x-24}" y="${150+i*8}" width="48" height="62" fill="${t.colors[i]}" opacity=".75"></rect><line x1="${x-24}" y1="${181+i*8}" x2="${x+24}" y2="${181+i*8}" stroke="${t.bg}" stroke-width="4"></line>`; }).join("");
+      if (kind === "violin") return [0,1,2].map((i)=>`<path d="M${150+i*110},112 C${105+i*110},160 ${105+i*110},210 ${150+i*110},252 C${195+i*110},210 ${195+i*110},160 ${150+i*110},112Z" fill="${t.colors[i]}" opacity=".75"></path>`).join("");
+      if (kind === "strip") return Array.from({length:30},(_,i)=>`<circle cx="${90+(i%10)*38}" cy="${130+Math.floor(i/10)*55+((i*17)%24)}" r="5" fill="${t.colors[i%5]}"></circle>`).join("");
+      if (kind === "scatter" || kind === "bubble") return grid() + [[80,210,8],[150,185,14],[230,160,10],[310,126,18],[400,148,12]].map((p,i)=>`<circle cx="${p[0]+40}" cy="${p[1]}" r="${kind==="bubble"?p[2]:7}" fill="${t.colors[i]}"></circle>`).join("");
+      if (kind === "heat") return [0,1,2,3,4].map((c)=>[0,1,2].map((r)=>`<rect x="${90+c*70}" y="${110+r*48}" width="62" height="40" rx="4" fill="${t.colors[0]}" opacity="${.2+((c+r*2)%5)*.16}"></rect>`).join("")).join("");
+      if (kind === "donut" || kind === "pie") return donut(t, w/2, 190, kind==="pie"?0:48);
+      if (kind === "treemap") return `<rect x="70" y="105" width="230" height="150" fill="${t.colors[0]}"></rect><rect x="306" y="105" width="100" height="70" fill="${t.colors[1]}"></rect><rect x="412" y="105" width="64" height="70" fill="${t.colors[2]}"></rect><rect x="306" y="181" width="170" height="74" fill="${t.colors[3]}"></rect>`;
+      if (kind === "stacked") return [0,1,2,3].map((i)=>{ let x=x0+i*100+20,y=base; return [30,24,18].map((v,j)=>{ y-=v*2.2; return bar(x,y,48,v*2.2,t.colors[j]); }).join(""); }).join("");
+      if (kind === "sunburst") return donut(t,w/2,190,42)+`<circle cx="${w/2}" cy="190" r="38" fill="${t.colors[0]}"></circle>`;
+      if (kind === "waterfall") return [70,38,30,-22,-16,100].map((v,i)=>bar(70+i*68, v>0?210-v:210, 42, Math.abs(v), v<0?t.colors[2]:t.colors[i%5])).join("");
+      if (kind === "sankey") return `<path d="M80,140 C210,120 310,110 445,118" fill="none" stroke="${t.colors[0]}" stroke-width="28" opacity=".65"></path><path d="M80,190 C210,190 310,210 445,220" fill="none" stroke="${t.colors[1]}" stroke-width="22" opacity=".65"></path><rect x="56" y="110" width="46" height="110" fill="${t.text}"></rect><rect x="445" y="96" width="50" height="48" fill="${t.colors[0]}"></rect><rect x="445" y="198" width="50" height="48" fill="${t.colors[1]}"></rect>`;
+      if (kind === "funnel") return [350,280,210,140,80].map((ww,i)=>`<path d="M${w/2-ww/2},${105+i*36} H${w/2+ww/2} L${w/2+(ww-52)/2},${136+i*36} H${w/2-(ww-52)/2}Z" fill="${t.colors[i]}" opacity=".82"></path>`).join("");
+      if (kind === "network") return `<line x1="140" y1="150" x2="250" y2="120" stroke="${t.grid}" stroke-width="4"></line><line x1="250" y1="120" x2="360" y2="180" stroke="${t.grid}" stroke-width="4"></line><line x1="140" y1="150" x2="230" y2="245" stroke="${t.grid}" stroke-width="4"></line><line x1="230" y1="245" x2="360" y2="180" stroke="${t.grid}" stroke-width="4"></line>${[[140,150],[250,120],[360,180],[230,245]].map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${18+i*2}" fill="${t.colors[i]}"></circle>`).join("")}`;
+      if (kind === "bullet") return `<rect x="82" y="158" width="356" height="52" fill="${t.grid}" opacity=".5"></rect><rect x="82" y="174" width="260" height="20" fill="${t.accent}"></rect><line x1="375" y1="144" x2="375" y2="224" stroke="${t.text}" stroke-width="4"></line>`;
+      if (kind === "gauge") return `<path d="M150,225 A110,110 0 0 1 370,225" fill="none" stroke="${t.grid}" stroke-width="28" stroke-linecap="round"></path><path d="M150,225 A110,110 0 0 1 310,128" fill="none" stroke="${t.accent}" stroke-width="28" stroke-linecap="round"></path><text x="260" y="235" text-anchor="middle" fill="${t.text}" font-size="42" font-weight="900">74%</text>`;
+      if (kind === "kpi") return `<text x="${w/2}" y="168" text-anchor="middle" fill="${t.muted}" font-size="15">Weekly active teams</text><text x="${w/2}" y="224" text-anchor="middle" fill="${t.text}" font-size="52" font-weight="900">1,280</text><rect x="130" y="260" width="260" height="10" rx="5" fill="${t.grid}"></rect><rect x="130" y="260" width="260" height="10" rx="5" fill="${t.accent}"></rect>`;
+      if (kind === "map") return `<path d="M120,150 L190,120 L250,150 L228,220 L150,225Z" fill="${t.colors[0]}" opacity=".75"></path><path d="M260,150 L365,135 L410,205 L340,255 L245,225Z" fill="${t.colors[1]}" opacity=".75"></path><path d="M160,235 L245,230 L270,300 L180,320 L110,272Z" fill="${t.colors[2]}" opacity=".75"></path>`;
+      if (kind === "pointmap") return renderChart("map",t,w,h)+`<circle cx="292" cy="205" r="12" fill="${t.accent}"></circle><circle cx="358" cy="185" r="8" fill="${t.accent}"></circle>`;
+      if (kind === "wordcloud") return `<text x="105" y="135" fill="${t.colors[0]}" font-size="34" font-weight="900">synergy</text><text x="250" y="190" fill="${t.colors[1]}" font-size="44" font-weight="900">growth</text><text x="120" y="235" fill="${t.colors[2]}" font-size="28" font-weight="800">quality</text><text x="315" y="255" fill="${t.colors[3]}" font-size="22" font-weight="800">value</text>`;
+      return "";
+    }
+
+    function donut(t, cx, cy, inner) {
+      const vals = [38,24,21,11,6];
+      let a = -Math.PI/2, out = "";
+      vals.forEach((v,i)=>{ const b=a+v/100*Math.PI*2; out += arc(cx,cy,96,inner,a,b,t.colors[i]); a=b; });
+      return out;
+    }
+    function arc(cx,cy,r,inner,a,b,color) {
+      const p=(rr,aa)=>[cx+Math.cos(aa)*rr,cy+Math.sin(aa)*rr], large=b-a>Math.PI?1:0;
+      const [x1,y1]=p(r,a),[x2,y2]=p(r,b);
+      if (!inner) return `<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${large} 1 ${x2},${y2}Z" fill="${color}"></path>`;
+      const [x3,y3]=p(inner,b),[x4,y4]=p(inner,a);
+      return `<path d="M${x1},${y1} A${r},${r} 0 ${large} 1 ${x2},${y2} L${x3},${y3} A${inner},${inner} 0 ${large} 0 ${x4},${y4}Z" fill="${color}"></path>`;
+    }
+
+    Object.entries(THEMES).forEach(([id, t]) => {
+      const option = document.createElement("option");
+      option.value = id;
+      option.textContent = `${t.label} (${id})`;
+      document.getElementById("theme-select").appendChild(option);
+    });
+
+    function visibleCharts() {
+      return CHARTS.filter((c) => activeQuestion === "all" || c.question === activeQuestion);
+    }
+
+    function render() {
+      const theme = THEMES[activeTheme];
+      const visible = visibleCharts();
+      if (!visible.some((c) => c.id === activeId)) activeId = visible[0].id;
+      const active = CHARTS.find((c) => c.id === activeId) || visible[0];
+      spotlightChart.innerHTML = svg(active, theme, true);
+      spotlightTitle.textContent = active.name;
+      spotlightCopy.textContent = active.story;
+      spotlightQuestion.textContent = active.question === "avoid" ? "avoid by default" : active.question;
+      spotlightTheme.textContent = `${theme.label} · ${activeTheme}`;
+      useWhen.textContent = active.use;
+      avoidWhen.textContent = active.avoid;
+      accessibility.textContent = active.access;
+      gallery.replaceChildren();
+      visible.forEach((chart) => {
+        const card = document.createElement("article");
+        card.className = `card${chart.avoidCard ? " is-avoid" : ""}${chart.id === activeId ? " is-active" : ""}`;
+        card.tabIndex = 0;
+        card.innerHTML = `${chart.avoidCard ? '<div class="avoid-banner"><span class="avoid-mark">X</span>Avoid</div>' : ''}<div class="card-chart">${svg(chart, theme, false)}</div><div class="card-body"><div class="card-topline"><span>${chart.question}</span><span>${activeTheme}</span></div><h3>${chart.name}</h3><p>${chart.use}</p></div>`;
+        card.addEventListener("click", () => { activeId = chart.id; render(); });
+        card.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); activeId = chart.id; render(); } });
+        gallery.appendChild(card);
+      });
+    }
+
+    selectTheme.addEventListener("change", (event) => { activeTheme = event.target.value; render(); });
+    selectQuestion.addEventListener("change", (event) => { activeQuestion = event.target.value; render(); });
+    selectTheme.value = activeTheme;
+    render();
+  </script>
+</body>
+</html>

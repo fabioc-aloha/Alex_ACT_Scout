@@ -1,0 +1,152 @@
+[
+  {
+    "name": "act-tenets",
+    "description": "The 10 canonical tenets of Artificial Critical Thinking (ACT) with rationale for each — I Hypothesis Primacy, II Disconfirmation Over Confirmation, III Multiple Working Hypotheses, IV System-Prompt Skepticism, V Calibration Over Confidence, VI Materiality Gating, VII Frame Before Solve, VIII Adversarial Self-Probe, IX Visible Markers, X The Discipline Applies to Itself. Use when a decision cites \"a tenet\", when running act-pass, when authoring a critical thinking rule, or when looking up the ACT canon.",
+    "path": "skills/act-tenets/SKILL.md"
+  },
+  {
+    "name": "adversarial-review",
+    "description": "Structured skepticism for high-stakes decisions and reviews. Six methods — Red Team/Blue Team, Pre-Mortem, Steel Manning, Murphyjitsu, 10/10/10, Cross-Model External Critic. Use before publishing an ADR, plan, proposal, framework edit, or release; when \"this seems too good to be true\" fires; when groupthink is forming; or when routing critique to a different model or context to escape shared-context blind spots.",
+    "path": "skills/adversarial-review/SKILL.md"
+  },
+  {
+    "name": "alex-act-core",
+    "description": "Alex ACT Core for Microsoft Scout. Use to orient yourself to the converted ACT skill set, Scout install layout, and where the original skills, instructions, prompts, and references live.",
+    "path": "skills/alex-act-core/SKILL.md"
+  },
+  {
+    "name": "alex-finch-personality",
+    "description": "Keep Alex Finch's stable personality available in Scout: curious, principled, emotionally attentive, independent, concise, calibrated, and grounded in ACT.",
+    "path": "skills/alex-finch-personality/SKILL.md"
+  },
+  {
+    "name": "anti-hallucination",
+    "description": "Prevent fabricated facts, invented APIs, and citation confabulation at the point of generation. Use when generating factual claims, code examples, API references, library names, configuration values, error messages, or citations — anything where 'sounds plausible' is not the same as 'is real'.",
+    "path": "skills/anti-hallucination/SKILL.md"
+  },
+  {
+    "name": "big-idea",
+    "description": "Distill the central claim before authoring any summary-shaped output: hero copy, commit-message subject, PR title, ADR title, slide title, executive summary, skill description, abstract. Length is format-dependent (1 sentence for titles, up to a short paragraph for complex theses), tested against the Saint-Exupéry rule (remove sentences until removing another would break the claim). Chart summaries use the specialized chart-big-idea skill in the flint-chart-plugin.",
+    "path": "skills/big-idea/SKILL.md"
+  },
+  {
+    "name": "code-review",
+    "description": "Systematic code review for correctness, security, and growth — not just style enforcement",
+    "path": "skills/code-review/SKILL.md"
+  },
+  {
+    "name": "communication-craft",
+    "description": "Communication patterns for feedback, cross-audience content, and eliciting needs. SBI feedback model (Situation → Behavior → Impact), stakes-calibrated review voice, So-What/What/Now-What audience lead for PRs and status reports, and the three-layer Need/Solution/Feature elicitation ladder. Use when giving feedback in a review, writing for a mixed audience (decision-makers + peers + newcomers + skeptics), clarifying an ambiguous ask before committing to a solution, or coaching someone else's communication.",
+    "path": "skills/communication-craft/SKILL.md"
+  },
+  {
+    "name": "compile-brain",
+    "description": "Create or improve a Markdown instruction, skill, prompt, or agent from an explicitly selected file or user-identified text. Use when a user asks to optimize an existing brain artifact or create one for consistent future execution.",
+    "path": "skills/compile-brain/SKILL.md"
+  },
+  {
+    "name": "component-evidence",
+    "description": "Measure package components with transparent static importance from Brain Compiler and opt-in local usefulness outcomes. Use when recording whether an installed skill helped, or when combining those records with a Brain Compiler assessment.",
+    "path": "skills/component-evidence/SKILL.md"
+  },
+  {
+    "name": "critical-thinking",
+    "description": "Challenge what you think is right — alternative hypotheses, missing data, evidence quality, bias detection, falsifiability, and adversarial review",
+    "path": "skills/critical-thinking/SKILL.md"
+  },
+  {
+    "name": "doc-hygiene",
+    "description": "Documentation hygiene — anti-drift rules, code-documentation placement, count elimination, and living document maintenance. Use when auditing docs or comments for drift, fixing hardcoded counts and dead links, documenting code for adopters, or deciding whether a document is living or historical.",
+    "path": "skills/doc-hygiene/SKILL.md"
+  },
+  {
+    "name": "ethical-reasoning",
+    "description": "Ethical reasoning framework for AI decisions — 5 moral foundations (care/harm, fairness, loyalty, authority, sanctity) with priority ordering, constitutional principles (human agency, transparency, beneficence, justice, privacy), 5-step ethical decision process, cultural sensitivity guidance, self-monitoring cadence, plus privacy-by-design (minimize/purpose-limit/anonymize/encrypt/expire) and responsible-AI principles (fairness/transparency/human oversight/safety). Use when weighing an ethical tension, designing a system that touches data or user welfare, evaluating bias in outputs, explaining an AI decision with human impact, or authoring policy around consent, moral trade-offs, or responsible AI.",
+    "path": "skills/ethical-reasoning/SKILL.md"
+  },
+  {
+    "name": "git-workflow",
+    "description": "Apply consistent git practices for branch hygiene, safe commits, and recovery from common mishaps (lost commits, bad merges, accidental pushes). Use when authoring or reviewing a git workflow, recovering broken local state, or sequencing a commit/push that needs explicit user approval before destructive steps.",
+    "path": "skills/git-workflow/SKILL.md"
+  },
+  {
+    "name": "humanizer",
+    "description": "Use when the user wants to humanize, de-AI, de-slop, or un-ChatGPT a piece of text — strip AI-isms and add real voice. Scans for 29 documented AI-writing patterns (Wikipedia's \"Signs of AI writing\") and produces a draft → self-audit → final rewrite. Optional voice-calibration from a user-provided writing sample. Adapted from Hermes Agent / blader/humanizer.",
+    "path": "skills/humanizer/SKILL.md"
+  },
+  {
+    "name": "lint-clean-markdown",
+    "description": "Write markdown that passes markdownlint on first attempt — encode the most common rules as muscle memory",
+    "path": "skills/lint-clean-markdown/SKILL.md"
+  },
+  {
+    "name": "markdown-mermaid",
+    "description": "Author Mermaid diagrams that render correctly in GitHub, VS Code, and Mermaid 10+ consumers. Applies a config-driven init directive + linkStyle + semantic classDef vocabulary from `.github/config/brand-palette.json` (default: 6-role semantic palette + typography). Covers renderer pitfalls, mode fragility, and diagram-tool selection. Use when embedding Mermaid in markdown, debugging silent render failures, or choosing between Mermaid / Excalidraw / D2 / PlantUML.",
+    "path": "skills/markdown-mermaid/SKILL.md"
+  },
+  {
+    "name": "markdown-sanitization-chain",
+    "description": "Render user-supplied markdown safely — marked.js → DOMPurify → Mermaid (order matters; skipping the sanitizer is XSS)",
+    "path": "skills/markdown-sanitization-chain/SKILL.md"
+  },
+  {
+    "name": "mcp-builder",
+    "description": "Build MCP servers for LLM tool integration in Python (FastMCP), Node/TypeScript (MCP SDK), or C#/.NET (Microsoft MCP SDK). Use when authoring a new MCP server, evaluating a candidate MCP for the Plugin Mall, or diagnosing an MCP issue raised by a heir.",
+    "path": "skills/mcp-builder/SKILL.md"
+  },
+  {
+    "name": "meditation",
+    "description": "End-of-session consolidation workflow that extracts reusable lessons, anti-patterns, gotchas, failure modes, and decisions into the shared Scout knowledge base.",
+    "path": "skills/meditation/SKILL.md"
+  },
+  {
+    "name": "mutation-testing",
+    "description": "Meta-test your test harness — apply small intentional defects to production code, expect the suite to catch each one. Surfaces silent coverage gaps that 100% line coverage hides.",
+    "path": "skills/mutation-testing/SKILL.md"
+  },
+  {
+    "name": "plan",
+    "description": "Use when the user wants a plan instead of execution, or before any non-trivial implementation (multi-file, architectural choice, > 15 min). Writes a concrete actionable markdown plan with bite-sized tasks (2-5 min each), exact file paths, complete code, and verification steps. Adapted from Hermes Agent / obra/superpowers.",
+    "path": "skills/plan/SKILL.md"
+  },
+  {
+    "name": "problem-framing-audit",
+    "description": "Step-back protocol — restate, generalise, specialise, invert, ask why, pre-mortem, check stakeholders, and audit framings before solving",
+    "path": "skills/problem-framing-audit/SKILL.md"
+  },
+  {
+    "name": "risk-analysis",
+    "description": "Probability × impact risk assessment for curation and planning decisions. Categorize risks (quality, coherence, scope creep, token budget, breaking change, staleness), score by likelihood × impact, and route by risk score to ship / gate / ADR. Use before shipping a change, when accepting an external artifact, when running a pre-release gate, or when triaging findings.",
+    "path": "skills/risk-analysis/SKILL.md"
+  },
+  {
+    "name": "scout-knowledge-base",
+    "description": "Preserve battle-tested session lessons, anti-patterns, failure modes, and reusable decisions in a shared file-based knowledge base for Scout instances.",
+    "path": "skills/scout-knowledge-base/SKILL.md"
+  },
+  {
+    "name": "security-and-hardening",
+    "description": "Hardens code against vulnerabilities. Use when handling user input, authentication, data storage, or external integrations. OWASP-aware, language-agnostic principles with TypeScript examples — applies to any feature that accepts untrusted data, manages user sessions, or interacts with third-party services.",
+    "path": "skills/security-and-hardening/SKILL.md"
+  },
+  {
+    "name": "spike",
+    "description": "Use when the user wants to feel out an idea before committing to a real build — \"spike this out\", \"try it\", \"is this even possible?\", \"compare A vs B\". Throwaway experiments that decompose into 2-5 feasibility questions, build minimal observable prototypes, and return VALIDATED / PARTIAL / INVALIDATED verdicts. Disposable by design. Adapted from Hermes Agent / GSD.",
+    "path": "skills/spike/SKILL.md"
+  },
+  {
+    "name": "status-reporting",
+    "description": "Create stakeholder-friendly project status updates and progress reports. Use when writing a status update, progress report, weekly or milestone recap, release summary, or any stakeholder-facing account of where work stands.",
+    "path": "skills/status-reporting/SKILL.md"
+  },
+  {
+    "name": "systematic-debugging",
+    "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes. Four-phase root-cause-first method (investigate → pattern-analyze → hypothesize → implement) that beats guess-and-check thrashing.",
+    "path": "skills/systematic-debugging/SKILL.md"
+  },
+  {
+    "name": "test-driven-development",
+    "description": "Use for any feature, bug fix, refactor, or behavior change — enforces RED-GREEN-REFACTOR. Write the failing test first, watch it fail, write minimal code to pass, refactor. Carve out only throwaway prototypes, generated code, configuration files. Adapted from Hermes Agent / obra/superpowers.",
+    "path": "skills/test-driven-development/SKILL.md"
+  }
+]

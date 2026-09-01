@@ -1,0 +1,34 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm test
+      - run: powershell -NoProfile -ExecutionPolicy Bypass -File tests/install-visual-registry.Tests.ps1
+
+  unix-installers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash -n install.sh
+      - run: bash -n install-visual.sh
+      - run: bash -n skills-visual/flint-chart-mcp/scripts/register-flint-mcp.sh
+      - run: bash -n skills-visual/flint-chart-mcp/scripts/setup-flint-runtime.sh
+      - run: |
+          destination="$RUNNER_TEMP/alex-act-scout-core"
+          ./install.sh --destination "$destination"
+          test ! -e "$destination"
+      - run: |
+          destination="$RUNNER_TEMP/alex-act-scout-visual"
+          ./install-visual.sh --destination "$destination"
+          test ! -e "$destination"

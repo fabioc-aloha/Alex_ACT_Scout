@@ -1,0 +1,1772 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Flint chart theme gallery</title>
+  <link rel="icon" href="data:,">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 32px;
+    }
+
+    .shell {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .panel,
+    .card,
+    .spotlight,
+    .note {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+    }
+
+    .hero-copy {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--cp-accent-soft);
+      pointer-events: none;
+    }
+
+    .hero-copy > * {
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--cp-accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 4px;
+      border-radius: 0.625rem;
+      background: var(--cp-accent);
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.25rem, 5vw, 4.75rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy p {
+      max-width: 820px;
+      margin: 20px 0 0;
+      color: var(--cp-text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .controls {
+      padding: 24px;
+    }
+
+    .controls h2,
+    .spotlight h2 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .controls p {
+      margin: 0 0 20px;
+      color: var(--cp-text-muted);
+      line-height: 1.5;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--cp-text-muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    select {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 12px;
+      color: var(--cp-text);
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .button {
+      min-height: 42px;
+      padding: 8px 12px;
+      color: var(--cp-accent-fg);
+      background: var(--cp-accent);
+      border: 1px solid var(--cp-accent);
+      border-radius: 0.625rem;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .button.secondary {
+      color: var(--cp-text);
+      background: var(--cp-surface);
+      border-color: var(--cp-border-strong);
+    }
+
+    .button:hover {
+      background: var(--cp-accent-hover);
+      border-color: var(--cp-accent-hover);
+    }
+
+    .button.secondary:hover {
+      color: var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border-color: var(--cp-accent);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 12px;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--cp-text-muted);
+      font-size: 0.8rem;
+    }
+
+    .spotlight {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 24px;
+      padding: 24px;
+    }
+
+    .education {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .framework {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .framework-item {
+      padding: 14px;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+    }
+
+    .framework-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--cp-text);
+    }
+
+    .framework-item span {
+      color: var(--cp-text-muted);
+      line-height: 1.45;
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    details.industry {
+      padding: 14px;
+    }
+
+    details.industry summary {
+      cursor: pointer;
+      color: var(--cp-text);
+      font-weight: 800;
+    }
+
+    details.industry ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--cp-text-muted);
+      line-height: 1.45;
+    }
+
+    .spotlight-chart {
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: var(--cp-bg-elevated);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+    }
+
+    .spotlight-chart svg,
+    .card-chart svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .spotlight-info {
+      display: grid;
+      align-content: center;
+      padding: 8px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      color: var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .spotlight-title {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .spotlight-text {
+      margin: 16px 0 0;
+      color: var(--cp-text-muted);
+      line-height: 1.55;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .insight {
+      padding: 12px;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+    }
+
+    .insight strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--cp-text);
+      font-size: 0.85rem;
+    }
+
+    .insight span {
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .theme-code {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 20px;
+      padding: 10px 12px;
+      color: var(--cp-text);
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.92rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-rows: 280px auto;
+      min-height: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .card:hover,
+    .card.is-active {
+      transform: translateY(-2px);
+      border-color: var(--cp-accent);
+    }
+
+    .card-chart {
+      min-height: 280px;
+      background: var(--cp-bg-elevated);
+      border-bottom: 1px solid var(--cp-border);
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--cp-text-muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.25;
+    }
+
+    .card p,
+    .note {
+      color: var(--cp-text-muted);
+      line-height: 1.5;
+    }
+
+    .card p {
+      margin: 10px 0 0;
+    }
+
+    .card-insight {
+      margin-top: 12px;
+      padding: 10px;
+      color: var(--cp-text-muted);
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      font-size: 0.86rem;
+      line-height: 1.35;
+    }
+
+    .provider-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .provider {
+      padding: 4px 7px;
+      color: var(--cp-text-muted);
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .note {
+      padding: 18px 20px;
+    }
+
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 10;
+      padding: 12px 14px;
+      color: var(--cp-accent-fg);
+      background: var(--cp-accent);
+      border-radius: 0.625rem;
+      box-shadow: var(--cp-shadow);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 160ms ease, transform 160ms ease;
+      pointer-events: none;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .spotlight {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .framework,
+      .industry-grid,
+      .insight-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 16px;
+      }
+
+      .hero-copy,
+      .controls,
+      .spotlight {
+        padding: 20px;
+      }
+
+      .gallery,
+      .stats,
+      .actions,
+      .framework,
+      .industry-grid,
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="panel hero-copy">
+          <div class="eyebrow">Live Flint gallery</div>
+          <h1 id="page-title">Pick a color scheme and render every chart on demand.</h1>
+          <p>
+            This gallery does not use pre-rendered chart images. The browser draws each chart as SVG
+            whenever you change the selected Flint theme, so the full sample set updates together.
+          </p>
+        </div>
+        <aside class="panel controls" aria-label="Gallery controls">
+          <h2>Color scheme</h2>
+          <p>Select a Flint theme to apply it to all chart samples, then narrow the gallery by the question your data needs to answer.</p>
+          <div class="field">
+            <label for="theme-select">Theme</label>
+            <select id="theme-select"></select>
+          </div>
+          <div class="field">
+            <label for="task-select">Question type</label>
+            <select id="task-select">
+              <option value="all">All chart questions</option>
+              <option value="compare">Ranking or category comparison</option>
+              <option value="time">Change over time</option>
+              <option value="distribution">Distribution and spread</option>
+              <option value="relationship">Relationship or correlation</option>
+              <option value="composition">Part-to-whole and hierarchy</option>
+              <option value="flow">Flow, process, or structure</option>
+              <option value="target">Target, KPI, or status</option>
+              <option value="geospatial">Geography and location</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button class="button" id="copy-theme" type="button">Copy theme_spec</button>
+            <button class="button secondary" id="shuffle-theme" type="button">Try another</button>
+          </div>
+          <div class="stats" aria-label="Gallery summary">
+            <div class="stat"><strong>10</strong><span>themes</span></div>
+            <div class="stat"><strong>47</strong><span>chart types</span></div>
+            <div class="stat"><strong>3</strong><span>providers</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="education" aria-label="Chart selection education">
+        <div class="panel framework">
+          <div class="framework-item"><strong>Start with the question</strong><span>Choose the chart family from the decision: compare, trend, distribute, relate, compose, flow, or locate.</span></div>
+          <div class="framework-item"><strong>Match the data shape</strong><span>Time fields, categories, intervals, hierarchy, and source-target pairs each constrain the honest visual vocabulary.</span></div>
+          <div class="framework-item"><strong>Design for defensibility</strong><span>Prefer the simplest chart that answers the question, label units, and avoid decoration that changes the reader's inference.</span></div>
+          <div class="framework-item"><strong>Comparing categories?</strong><span>Use bar, grouped bar, lollipop, slope, ranged dot, or pyramid charts depending on labels and comparison structure.</span></div>
+          <div class="framework-item"><strong>Tracking time?</strong><span>Use line, area, sparkline, range area, bump, calendar heatmap, Gantt, or candlestick charts depending on grain and uncertainty.</span></div>
+          <div class="framework-item"><strong>Explaining composition or flow?</strong><span>Use treemap, sunburst, donut, stacked bar, waterfall, Sankey, funnel, or network forms only when their structure is the point.</span></div>
+        </div>
+
+        <div class="industry-grid">
+          <details class="panel industry">
+            <summary>Government and defense</summary>
+            <ul>
+              <li>Budget allocation: treemap, waterfall, stacked bar.</li>
+              <li>Milestones: Gantt, line, bullet.</li>
+              <li>Risk and compliance: heatmap, bubble, gauge, bullet.</li>
+            </ul>
+          </details>
+          <details class="panel industry">
+            <summary>Technology and engineering</summary>
+            <ul>
+              <li>System performance: line, control-style trend, gauge.</li>
+              <li>Defects: histogram, Pareto-style bar, boxplot.</li>
+              <li>Architecture dependencies: network graph, Sankey, tree.</li>
+            </ul>
+          </details>
+          <details class="panel industry">
+            <summary>Finance and audit</summary>
+            <ul>
+              <li>Revenue bridge: waterfall and bullet charts.</li>
+              <li>Portfolio allocation: treemap, donut, bubble.</li>
+              <li>Audit findings: horizontal bar, heatmap, lollipop.</li>
+            </ul>
+          </details>
+          <details class="panel industry">
+            <summary>Healthcare and operations</summary>
+            <ul>
+              <li>Wait times: histogram, boxplot, line.</li>
+              <li>Pathways and funnels: Sankey, funnel, Gantt.</li>
+              <li>Utilization: heatmap, stacked bar, calendar heatmap.</li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+      <section class="spotlight" aria-label="Selected chart spotlight">
+        <div class="spotlight-chart" id="spotlight-chart"></div>
+        <div class="spotlight-info">
+          <div class="pill-row">
+            <span class="pill" id="spotlight-theme"></span>
+            <span class="pill" id="spotlight-type"></span>
+          </div>
+          <h2 class="spotlight-title" id="spotlight-title"></h2>
+          <p class="spotlight-text" id="spotlight-description"></p>
+          <div class="insight-grid">
+            <div class="insight"><strong>Use when</strong><span id="spotlight-use"></span></div>
+            <div class="insight"><strong>Avoid when</strong><span id="spotlight-avoid"></span></div>
+            <div class="insight"><strong>Accessibility note</strong><span id="spotlight-accessibility"></span></div>
+          </div>
+          <code class="theme-code" id="theme-code"></code>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery" aria-label="Live chart gallery"></section>
+
+      <section class="panel note">
+        The dropdown changes the theme for every chart. The SVGs are generated directly in this
+        page from sample data, so the gallery stays interactive without external libraries or
+        static chart images.
+      </section>
+    </div>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+  <script>
+    const THEMES = {
+      economist: {
+        label: "The Economist",
+        bg: "#ffffff",
+        text: "#1f2328",
+        muted: "#57606a",
+        grid: "#d8dee4",
+        accent: "#e3120b",
+        colors: ["#0b78a5", "#46b8c8", "#f2b632", "#d95f02", "#6a4c93", "#72b01d"]
+      },
+      nyt: {
+        label: "New York Times",
+        bg: "#ffffff",
+        text: "#111111",
+        muted: "#666666",
+        grid: "#d9d9d9",
+        accent: "#d0021b",
+        colors: ["#d62728", "#2f5597", "#8c564b", "#9467bd", "#2ca02c", "#ff7f0e"]
+      },
+      swiss: {
+        label: "Swiss",
+        bg: "#f8f4eb",
+        text: "#111111",
+        muted: "#5f5f5f",
+        grid: "#cfc8bc",
+        accent: "#e10600",
+        colors: ["#111111", "#e10600", "#666666", "#b7b7b7", "#f0c808", "#2f80ed"]
+      },
+      nature: {
+        label: "Nature",
+        bg: "#ffffff",
+        text: "#222222",
+        muted: "#666666",
+        grid: "#e2e2e2",
+        accent: "#0072b2",
+        colors: ["#0072b2", "#009e73", "#d55e00", "#cc79a7", "#f0e442", "#56b4e9"]
+      },
+      mckinsey: {
+        label: "McKinsey",
+        bg: "#ffffff",
+        text: "#0f172a",
+        muted: "#64748b",
+        grid: "#dbe3ee",
+        accent: "#2f5fb3",
+        colors: ["#2f5fb3", "#86a8e7", "#b7c9ef", "#d6e0f7", "#7c8da6", "#f59e0b"]
+      },
+      datawrapper: {
+        label: "Datawrapper",
+        bg: "#ffffff",
+        text: "#222222",
+        muted: "#666666",
+        grid: "#dddddd",
+        accent: "#18a1cd",
+        colors: ["#18a1cd", "#f2b701", "#b6b6b6", "#ff7f0e", "#1f77b4", "#2ca02c"]
+      },
+      powerbi: {
+        label: "Power BI",
+        bg: "#111111",
+        text: "#f5f5f5",
+        muted: "#bdbdbd",
+        grid: "#2d2d2d",
+        accent: "#f2c811",
+        colors: ["#f2c811", "#118dff", "#12239e", "#e66c37", "#6b007b", "#e044a7"]
+      },
+      "powerbi-light": {
+        label: "Power BI light",
+        bg: "#ffffff",
+        text: "#252423",
+        muted: "#605e5c",
+        grid: "#e1dfdd",
+        accent: "#118dff",
+        colors: ["#118dff", "#12239e", "#e66c37", "#6b007b", "#e044a7", "#744ec2"]
+      },
+      pop: {
+        label: "Pop",
+        bg: "#fff000",
+        text: "#111111",
+        muted: "#303030",
+        grid: "#111111",
+        accent: "#ff1493",
+        colors: ["#ff1493", "#00d5ff", "#ff5c00", "#00c853", "#7c4dff", "#111111"]
+      },
+      cartoon: {
+        label: "Cartoon",
+        bg: "#fff8e7",
+        text: "#2d2a26",
+        muted: "#665c4f",
+        grid: "#d6c7aa",
+        accent: "#2b6cb0",
+        colors: ["#2b6cb0", "#f59e0b", "#ef4444", "#22c55e", "#a855f7", "#06b6d4"]
+      }
+    };
+
+    const SAMPLES = [
+      { id: "area-chart", chartType: "Area Chart", title: "Area chart emphasizes magnitude over time", description: "A filled trend for volume, backlog, or cumulative movement.", providers: ["vegalite", "echarts", "chartjs"], family: "area" },
+      { id: "bar-chart", chartType: "Bar Chart", title: "Bar chart compares categories cleanly", description: "A direct category comparison with a simple quantitative measure.", providers: ["vegalite", "echarts", "chartjs"], family: "bar" },
+      { id: "bar-table", chartType: "Bar Table", title: "Bar table blends labels with quick comparison", description: "A compact table-like view where in-row bars carry magnitude.", providers: ["vegalite"], family: "bar-table" },
+      { id: "boxplot", chartType: "Boxplot", title: "Boxplot shows spread and outliers", description: "A distribution summary for median, quartiles, whiskers, and extremes.", providers: ["vegalite", "echarts"], family: "boxplot" },
+      { id: "bubble-chart", chartType: "Bubble Chart", title: "Bubble chart adds magnitude to relationships", description: "A scatter-style comparison with point size as a third measure.", providers: ["chartjs"], family: "bubble" },
+      { id: "bullet-chart", chartType: "Bullet Chart", title: "Bullet chart compares progress to goal", description: "A compact target-progress view for KPI dashboards.", providers: ["vegalite", "echarts"], family: "bullet" },
+      { id: "bump-chart", chartType: "Bump Chart", title: "Bump chart tracks rank changes", description: "A ranking-over-time chart for leaders, laggards, and crossings.", providers: ["vegalite", "echarts", "chartjs"], family: "bump" },
+      { id: "calendar-heatmap", chartType: "Calendar Heatmap", title: "Calendar heatmap reveals daily intensity", description: "A date-grid pattern for activity, demand, or contribution volume.", providers: ["echarts"], family: "calendar" },
+      { id: "candlestick-chart", chartType: "Candlestick Chart", title: "Candlestick chart shows open-high-low-close", description: "A financial interval chart for price movement and volatility.", providers: ["vegalite", "echarts"], family: "candlestick" },
+      { id: "choropleth", chartType: "Choropleth", title: "Choropleth shades regions by value", description: "A geographic intensity view when place is part of the argument.", providers: ["vegalite"], family: "map" },
+      { id: "combo-chart", chartType: "Combo Chart", title: "Combo chart layers bars and lines", description: "A mixed chart when volume and rate need a shared timeline.", providers: ["chartjs"], family: "combo" },
+      { id: "connected-scatter-plot", chartType: "Connected Scatter Plot", title: "Connected scatter plot shows a path", description: "A relationship chart where the sequence of points matters.", providers: ["vegalite", "echarts", "chartjs"], family: "connected-scatter" },
+      { id: "density-plot", chartType: "Density Plot", title: "Density plot smooths a distribution", description: "A shape-first distribution view for concentration and skew.", providers: ["vegalite", "echarts"], family: "density" },
+      { id: "donut-chart", chartType: "Donut Chart", title: "Donut chart shows part-to-whole share", description: "A composition chart for a small number of categories.", providers: ["vegalite"], family: "donut" },
+      { id: "doughnut-chart", chartType: "Doughnut Chart", title: "Doughnut chart shows part-to-whole share", description: "Chart.js spelling of the donut-style composition chart.", providers: ["chartjs"], family: "donut" },
+      { id: "ecdf-plot", chartType: "ECDF Plot", title: "ECDF plot shows cumulative distribution", description: "A distribution chart for percent below or above each value.", providers: ["vegalite", "echarts", "chartjs"], family: "ecdf" },
+      { id: "funnel-chart", chartType: "Funnel Chart", title: "Funnel chart narrows across stages", description: "A conversion-stage view for drop-off and throughput.", providers: ["echarts"], family: "funnel" },
+      { id: "gantt-chart", chartType: "Gantt Chart", title: "Gantt chart lays out schedule duration", description: "A timeline view for tasks, phases, or dependencies.", providers: ["vegalite", "echarts", "chartjs"], family: "gantt" },
+      { id: "gauge-chart", chartType: "Gauge Chart", title: "Gauge chart shows a single status", description: "A radial target-progress indicator for one KPI.", providers: ["echarts"], family: "gauge" },
+      { id: "grouped-bar-chart", chartType: "Grouped Bar Chart", title: "Grouped bars compare series within categories", description: "Side-by-side product revenue across quarters.", providers: ["vegalite", "echarts", "chartjs"], family: "grouped-bar" },
+      { id: "heatmap", chartType: "Heatmap", title: "Heatmap reveals matrix intensity", description: "Support requests by weekday and time of day.", providers: ["vegalite", "echarts"], family: "heatmap" },
+      { id: "histogram", chartType: "Histogram", title: "Histogram shows distribution shape", description: "Implementation duration frequency by binned values.", providers: ["vegalite", "echarts", "chartjs"], family: "histogram" },
+      { id: "kpi-card", chartType: "KPI Card", title: "KPI card focuses on one number", description: "Single KPI with goal progress and status context.", providers: ["vegalite"], family: "kpi" },
+      { id: "line-chart", chartType: "Line Chart", title: "Line chart compares trends", description: "Two product health metrics across six months.", providers: ["vegalite", "echarts", "chartjs"], family: "line" },
+      { id: "lollipop-chart", chartType: "Lollipop Chart", title: "Lollipop chart ranks categories lightly", description: "Ranked capability score by workflow.", providers: ["vegalite", "echarts", "chartjs"], family: "lollipop" },
+      { id: "map", chartType: "Map", title: "Map positions values geographically", description: "A latitude-longitude plot when location is the reading task.", providers: ["vegalite"], family: "point-map" },
+      { id: "network-graph", chartType: "Network Graph", title: "Network graph shows nodes and links", description: "A relationship map for connected entities.", providers: ["echarts"], family: "network" },
+      { id: "parallel-coordinates", chartType: "Parallel Coordinates", title: "Parallel coordinates compare profiles", description: "A multi-measure profile view across several axes.", providers: ["echarts"], family: "parallel" },
+      { id: "pie-chart", chartType: "Pie Chart", title: "Pie chart shows a small composition", description: "A part-to-whole chart for a short category list.", providers: ["vegalite", "echarts", "chartjs"], family: "pie" },
+      { id: "pyramid-chart", chartType: "Pyramid Chart", title: "Pyramid chart compares mirrored groups", description: "A diverging composition view for two-sided category structures.", providers: ["vegalite", "echarts"], family: "pyramid" },
+      { id: "radar-chart", chartType: "Radar Chart", title: "Radar chart compares profiles around axes", description: "A radial profile view for small multi-metric comparisons.", providers: ["vegalite", "echarts", "chartjs"], family: "radar" },
+      { id: "range-area-chart", chartType: "Range Area Chart", title: "Range area chart shows uncertainty bands", description: "A trend with an upper and lower envelope.", providers: ["vegalite", "echarts", "chartjs"], family: "range-area" },
+      { id: "ranged-dot-plot", chartType: "Ranged Dot Plot", title: "Ranged dot plot compares intervals", description: "A compact interval chart for start/end or low/high values.", providers: ["vegalite", "echarts"], family: "ranged-dot" },
+      { id: "regression", chartType: "Regression", title: "Regression adds a fitted trend", description: "A relationship chart with an analytical trend line.", providers: ["vegalite", "echarts"], family: "regression" },
+      { id: "rose-chart", chartType: "Rose Chart", title: "Rose chart compares radial categories", description: "A circular magnitude chart for cyclic or directional categories.", providers: ["vegalite", "echarts", "chartjs"], family: "rose" },
+      { id: "sankey-diagram", chartType: "Sankey Diagram", title: "Sankey diagram shows flow between stages", description: "A weighted flow chart for source-to-target movement.", providers: ["echarts"], family: "sankey" },
+      { id: "scatter-plot", chartType: "Scatter Plot", title: "Scatter plot checks relationships", description: "Usage, satisfaction, and seat count by team.", providers: ["vegalite", "echarts", "chartjs"], family: "scatter" },
+      { id: "slope-chart", chartType: "Slope Chart", title: "Slope chart shows before-and-after change", description: "A two-point comparison across categories.", providers: ["vegalite", "echarts", "chartjs"], family: "slope" },
+      { id: "sparkline", chartType: "Sparkline", title: "Sparkline compresses a trend", description: "A tiny trend chart for inline status display.", providers: ["vegalite"], family: "sparkline" },
+      { id: "stacked-bar-chart", chartType: "Stacked Bar Chart", title: "Stacked bars compare totals and mix", description: "A category comparison with composition inside each bar.", providers: ["vegalite", "echarts", "chartjs"], family: "stacked-bar" },
+      { id: "streamgraph", chartType: "Streamgraph", title: "Streamgraph shows flowing composition", description: "A stacked area variation for shifting category volume.", providers: ["vegalite", "echarts"], family: "streamgraph" },
+      { id: "strip-plot", chartType: "Strip Plot", title: "Strip plot shows individual values", description: "A distribution view that preserves each observation.", providers: ["vegalite", "echarts", "chartjs"], family: "strip" },
+      { id: "sunburst-chart", chartType: "Sunburst Chart", title: "Sunburst chart shows hierarchy", description: "A radial tree map for nested part-to-whole structures.", providers: ["echarts"], family: "sunburst" },
+      { id: "tree", chartType: "Tree", title: "Tree shows hierarchical structure", description: "A node-link hierarchy for parent-child relationships.", providers: ["echarts"], family: "tree" },
+      { id: "treemap", chartType: "Treemap", title: "Treemap packs hierarchy by size", description: "A nested rectangle chart for hierarchical magnitude.", providers: ["echarts"], family: "treemap" },
+      { id: "violin-plot", chartType: "Violin Plot", title: "Violin plot compares distribution shape", description: "A mirrored density chart for spread across groups.", providers: ["vegalite"], family: "violin" },
+      { id: "waterfall-chart", chartType: "Waterfall Chart", title: "Waterfall chart explains movement", description: "Positive and negative drivers in ARR.", providers: ["vegalite", "echarts", "chartjs"], family: "waterfall" }
+    ];
+
+    const DATA = {
+      revenue: [
+        ["Q1", "Copilot", 42], ["Q2", "Copilot", 55], ["Q3", "Copilot", 68], ["Q4", "Copilot", 86],
+        ["Q1", "Scout", 28], ["Q2", "Scout", 41], ["Q3", "Scout", 57], ["Q4", "Scout", 73],
+        ["Q1", "Teams", 35], ["Q2", "Teams", 47], ["Q3", "Teams", 52], ["Q4", "Teams", 61]
+      ],
+      metrics: {
+        Activation: [42, 49, 57, 63, 71, 78],
+        Retention: [68, 70, 72, 73, 76, 81]
+      },
+      scatter: [
+        ["Alpha", 31, 61, 120], ["Bravo", 45, 68, 180], ["Cobalt", 52, 74, 240],
+        ["Delta", 58, 77, 210], ["Echo", 65, 83, 310], ["Falcon", 72, 80, 260],
+        ["Graphite", 79, 88, 420]
+      ],
+      heatmap: [
+        [32, 48, 37], [44, 63, 58], [51, 76, 69], [47, 71, 64], [35, 52, 41]
+      ],
+      donut: [["Search", 38], ["Referral", 24], ["Direct", 21], ["Social", 11], ["Events", 6]],
+      waterfall: [["Start", 120], ["Expansion", 36], ["New", 28], ["Churn", -18], ["Contraction", -9], ["End", 157]],
+      area: [82, 76, 68, 61, 55, 47, 39, 34],
+      histogram: [4, 7, 9, 11, 12, 13, 15, 17, 18, 20, 21, 21, 22, 24, 26, 29, 31, 33, 35, 38, 41, 45],
+      lollipop: [["Planning", 86], ["Debugging", 91], ["Review", 78], ["Docs", 73], ["Reporting", 69]]
+    };
+
+    const GUIDANCE = {
+      compare: {
+        use: "You need a clear ranking or category-to-category comparison.",
+        avoid: "The categories are unordered time periods; use a time-series chart instead.",
+        accessibility: "Sort intentionally and add direct labels when color distinguishes groups."
+      },
+      time: {
+        use: "The sequence, trend, volatility, or duration over time is the main message.",
+        avoid: "The x-axis is unordered categories or the time grain is inconsistent.",
+        accessibility: "Keep the time order explicit and label important endpoints or inflection points."
+      },
+      distribution: {
+        use: "The spread, skew, outliers, or shape of values matters more than one average.",
+        avoid: "You only have one or two observations per group.",
+        accessibility: "Explain bins, quartiles, or density shapes in nearby text."
+      },
+      relationship: {
+        use: "You need to test association, clustering, path movement, or multi-variable profiles.",
+        avoid: "The audience needs exact category totals more than pattern detection.",
+        accessibility: "Avoid relying on color alone; use labels, shape, or annotations for key points."
+      },
+      composition: {
+        use: "The reader must understand part-to-whole structure or hierarchy.",
+        avoid: "There are too many small slices or exact comparison is the main task.",
+        accessibility: "Direct labels beat legends; group tiny categories into an explicit Other bucket."
+      },
+      flow: {
+        use: "Movement, dependency, sequence, or hierarchy is the point.",
+        avoid: "The links are speculative or weights are not comparable.",
+        accessibility: "Label major paths directly and simplify minor flows."
+      },
+      target: {
+        use: "A single value, target, or status threshold drives the decision.",
+        avoid: "You need to explain why performance changed.",
+        accessibility: "Show the target value as text, not only as a marker or color."
+      },
+      geospatial: {
+        use: "Location is part of the question, not just decoration.",
+        avoid: "A ranked table or bar chart would answer the question more precisely.",
+        accessibility: "Use labels or tooltips for important regions; never rely on color intensity alone."
+      }
+    };
+
+    const FAMILY_TASK = {
+      area: "time",
+      bar: "compare",
+      "bar-table": "compare",
+      boxplot: "distribution",
+      bubble: "relationship",
+      bullet: "target",
+      bump: "time",
+      calendar: "time",
+      candlestick: "time",
+      map: "geospatial",
+      "point-map": "geospatial",
+      combo: "time",
+      "connected-scatter": "relationship",
+      density: "distribution",
+      donut: "composition",
+      ecdf: "distribution",
+      funnel: "flow",
+      gantt: "flow",
+      gauge: "target",
+      "grouped-bar": "compare",
+      heatmap: "relationship",
+      histogram: "distribution",
+      kpi: "target",
+      line: "time",
+      lollipop: "compare",
+      network: "flow",
+      parallel: "relationship",
+      pie: "composition",
+      pyramid: "compare",
+      radar: "relationship",
+      "range-area": "time",
+      "ranged-dot": "compare",
+      regression: "relationship",
+      rose: "composition",
+      sankey: "flow",
+      scatter: "relationship",
+      slope: "compare",
+      sparkline: "time",
+      "stacked-bar": "composition",
+      streamgraph: "composition",
+      strip: "distribution",
+      sunburst: "composition",
+      tree: "flow",
+      treemap: "composition",
+      violin: "distribution",
+      waterfall: "flow"
+    };
+
+    SAMPLES.forEach((sample) => {
+      sample.task = FAMILY_TASK[sample.family] || "compare";
+    });
+
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const select = document.getElementById("theme-select");
+    const taskSelect = document.getElementById("task-select");
+    const gallery = document.getElementById("gallery");
+    const spotlightChart = document.getElementById("spotlight-chart");
+    const spotlightTheme = document.getElementById("spotlight-theme");
+    const spotlightType = document.getElementById("spotlight-type");
+    const spotlightTitle = document.getElementById("spotlight-title");
+    const spotlightDescription = document.getElementById("spotlight-description");
+    const spotlightUse = document.getElementById("spotlight-use");
+    const spotlightAvoid = document.getElementById("spotlight-avoid");
+    const spotlightAccessibility = document.getElementById("spotlight-accessibility");
+    const themeCode = document.getElementById("theme-code");
+    const toast = document.getElementById("toast");
+    let activeThemeId = "economist";
+    let activeTask = "all";
+    let activeSampleId = "area-chart";
+
+    function esc(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+      }[char]));
+    }
+
+    function svgShell(width, height, theme, inner) {
+      return `
+        <svg viewBox="0 0 ${width} ${height}" role="img" xmlns="${SVG_NS}">
+          <rect width="${width}" height="${height}" rx="16" fill="${theme.bg}"></rect>
+          ${inner}
+        </svg>
+      `;
+    }
+
+    function titleBlock(sample, theme, width) {
+      return `
+        <text x="28" y="34" fill="${theme.text}" font-size="18" font-weight="800">${esc(sample.title)}</text>
+        <text x="28" y="56" fill="${theme.muted}" font-size="12">${esc(sample.chartType)} · rendered with ${esc(theme.label)}</text>
+        <line x1="28" y1="72" x2="${width - 28}" y2="72" stroke="${theme.grid}" stroke-width="1"></line>
+      `;
+    }
+
+    function scale(domainMin, domainMax, rangeMin, rangeMax) {
+      const span = domainMax - domainMin || 1;
+      return (value) => rangeMin + ((value - domainMin) / span) * (rangeMax - rangeMin);
+    }
+
+    function axisGrid(x, y, w, h, max, theme, ticks = 4) {
+      let out = "";
+      for (let i = 0; i <= ticks; i++) {
+        const value = Math.round((max / ticks) * i);
+        const yy = y + h - (h / ticks) * i;
+        out += `<line x1="${x}" y1="${yy}" x2="${x + w}" y2="${yy}" stroke="${theme.grid}" stroke-width="1"></line>`;
+        out += `<text x="${x - 8}" y="${yy + 4}" text-anchor="end" fill="${theme.muted}" font-size="10">${value}</text>`;
+      }
+      return out;
+    }
+
+    function renderGroupedBar(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: 56, r: 24, t: 88, b: 46 };
+      const pw = width - m.l - m.r;
+      const ph = height - m.t - m.b;
+      const quarters = ["Q1", "Q2", "Q3", "Q4"];
+      const products = ["Copilot", "Scout", "Teams"];
+      const y = scale(0, 95, m.t + ph, m.t);
+      const groupW = pw / quarters.length;
+      const barW = groupW / 5;
+      let out = titleBlock(sample, theme, width) + axisGrid(m.l, m.t, pw, ph, 90, theme);
+      quarters.forEach((q, qi) => {
+        const gx = m.l + qi * groupW;
+        out += `<text x="${gx + groupW / 2}" y="${height - 18}" text-anchor="middle" fill="${theme.muted}" font-size="11">${q}</text>`;
+        products.forEach((p, pi) => {
+          const row = DATA.revenue.find((d) => d[0] === q && d[1] === p);
+          const value = row[2];
+          const x = gx + barW * (pi + 1);
+          const yy = y(value);
+          out += `<rect x="${x}" y="${yy}" width="${barW * 0.82}" height="${m.t + ph - yy}" fill="${theme.colors[pi]}" rx="3"></rect>`;
+          if (wide) out += `<text x="${x + barW * 0.41}" y="${yy - 6}" text-anchor="middle" fill="${theme.text}" font-size="10">${value}</text>`;
+        });
+      });
+      products.forEach((p, i) => {
+        const x = m.l + i * 86;
+        out += `<rect x="${x}" y="78" width="10" height="10" fill="${theme.colors[i]}"></rect><text x="${x + 16}" y="87" fill="${theme.muted}" font-size="11">${p}</text>`;
+      });
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderLine(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: 58, r: 32, t: 88, b: 46 };
+      const pw = width - m.l - m.r;
+      const ph = height - m.t - m.b;
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+      const x = scale(0, months.length - 1, m.l, m.l + pw);
+      const y = scale(35, 85, m.t + ph, m.t);
+      let out = titleBlock(sample, theme, width) + axisGrid(m.l, m.t, pw, ph, 85, theme);
+      months.forEach((month, i) => out += `<text x="${x(i)}" y="${height - 18}" text-anchor="middle" fill="${theme.muted}" font-size="10">${month}</text>`);
+      Object.entries(DATA.metrics).forEach(([name, values], si) => {
+        const points = values.map((v, i) => `${x(i)},${y(v)}`).join(" ");
+        out += `<polyline points="${points}" fill="none" stroke="${theme.colors[si]}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>`;
+        values.forEach((v, i) => out += `<circle cx="${x(i)}" cy="${y(v)}" r="4" fill="${theme.colors[si]}"></circle>`);
+        out += `<text x="${x(values.length - 1) + 8}" y="${y(values.at(-1)) + 4}" fill="${theme.colors[si]}" font-size="12" font-weight="700">${name}</text>`;
+      });
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderScatter(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: 58, r: 30, t: 88, b: 46 };
+      const pw = width - m.l - m.r;
+      const ph = height - m.t - m.b;
+      const x = scale(25, 85, m.l, m.l + pw);
+      const y = scale(55, 92, m.t + ph, m.t);
+      const size = scale(100, 430, 5, 13);
+      let out = titleBlock(sample, theme, width) + axisGrid(m.l, m.t, pw, ph, 90, theme);
+      out += `<text x="${m.l + pw / 2}" y="${height - 16}" text-anchor="middle" fill="${theme.muted}" font-size="11">Weekly usage (%)</text>`;
+      DATA.scatter.forEach((d, i) => {
+        out += `<circle cx="${x(d[1])}" cy="${y(d[2])}" r="${size(d[3])}" fill="${theme.colors[i % theme.colors.length]}" opacity="0.88"></circle>`;
+        if (wide) out += `<text x="${x(d[1]) + 12}" y="${y(d[2]) + 4}" fill="${theme.text}" font-size="10">${d[0]}</text>`;
+      });
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderHeatmap(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: 78, r: 28, t: 88, b: 44 };
+      const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+      const hours = ["9 AM", "12 PM", "3 PM"];
+      const cellW = (width - m.l - m.r) / days.length;
+      const cellH = (height - m.t - m.b) / hours.length;
+      const max = 76;
+      let out = titleBlock(sample, theme, width);
+      DATA.heatmap.forEach((col, ci) => col.forEach((value, ri) => {
+        const opacity = 0.18 + (value / max) * 0.76;
+        out += `<rect x="${m.l + ci * cellW}" y="${m.t + ri * cellH}" width="${cellW - 3}" height="${cellH - 3}" fill="${theme.colors[0]}" opacity="${opacity}" rx="4"></rect>`;
+        if (wide) out += `<text x="${m.l + ci * cellW + cellW / 2}" y="${m.t + ri * cellH + cellH / 2 + 4}" text-anchor="middle" fill="${theme.text}" font-size="12">${value}</text>`;
+      }));
+      days.forEach((day, i) => out += `<text x="${m.l + i * cellW + cellW / 2}" y="${height - 18}" text-anchor="middle" fill="${theme.muted}" font-size="11">${day}</text>`);
+      hours.forEach((hour, i) => out += `<text x="${m.l - 12}" y="${m.t + i * cellH + cellH / 2 + 4}" text-anchor="end" fill="${theme.muted}" font-size="11">${hour}</text>`);
+      return svgShell(width, height, theme, out);
+    }
+
+    function arcPath(cx, cy, rOuter, rInner, start, end) {
+      const large = end - start > Math.PI ? 1 : 0;
+      const p = (r, a) => [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
+      const [x1, y1] = p(rOuter, start);
+      const [x2, y2] = p(rOuter, end);
+      const [x3, y3] = p(rInner, end);
+      const [x4, y4] = p(rInner, start);
+      return `M ${x1} ${y1} A ${rOuter} ${rOuter} 0 ${large} 1 ${x2} ${y2} L ${x3} ${y3} A ${rInner} ${rInner} 0 ${large} 0 ${x4} ${y4} Z`;
+    }
+
+    function renderDonut(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const cx = wide ? 350 : 220;
+      const cy = wide ? 285 : 205;
+      const rOuter = wide ? 142 : 92;
+      const rInner = wide ? 58 : 38;
+      let start = -Math.PI / 2;
+      let out = titleBlock(sample, theme, width);
+      DATA.donut.forEach((d, i) => {
+        const end = start + (d[1] / 100) * Math.PI * 2;
+        out += `<path d="${arcPath(cx, cy, rOuter, rInner, start, end)}" fill="${theme.colors[i]}"></path>`;
+        start = end;
+      });
+      DATA.donut.forEach((d, i) => {
+        const x = wide ? 570 : 350;
+        const y = (wide ? 175 : 130) + i * 26;
+        out += `<rect x="${x}" y="${y - 10}" width="12" height="12" rx="2" fill="${theme.colors[i]}"></rect><text x="${x + 18}" y="${y}" fill="${theme.text}" font-size="12">${d[0]} ${d[1]}%</text>`;
+      });
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderWaterfall(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: 58, r: 30, t: 88, b: 56 };
+      const pw = width - m.l - m.r;
+      const ph = height - m.t - m.b;
+      const y = scale(0, 180, m.t + ph, m.t);
+      const bw = pw / DATA.waterfall.length * 0.55;
+      let out = titleBlock(sample, theme, width) + axisGrid(m.l, m.t, pw, ph, 180, theme, 3);
+      let cumulative = 0;
+      DATA.waterfall.forEach((d, i) => {
+        const isTotal = i === 0 || i === DATA.waterfall.length - 1;
+        const start = isTotal ? 0 : cumulative;
+        const end = isTotal ? d[1] : cumulative + d[1];
+        if (!isTotal) cumulative = end;
+        else if (i === 0) cumulative = d[1];
+        const top = y(Math.max(start, end));
+        const bottom = y(Math.min(start, end));
+        const x = m.l + (pw / DATA.waterfall.length) * i + bw * 0.35;
+        out += `<rect x="${x}" y="${top}" width="${bw}" height="${Math.max(3, bottom - top)}" fill="${d[1] < 0 ? theme.colors[2] : theme.colors[i % theme.colors.length]}" rx="3"></rect>`;
+        out += `<text x="${x + bw / 2}" y="${height - 22}" text-anchor="middle" fill="${theme.muted}" font-size="10">${d[0]}</text>`;
+      });
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderKpi(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const value = 1280;
+      const goal = 1200;
+      const progress = Math.min(1, value / goal);
+      let out = titleBlock(sample, theme, width);
+      out += `<rect x="${wide ? 210 : 95}" y="${wide ? 135 : 108}" width="${wide ? 440 : 330}" height="${wide ? 250 : 170}" rx="16" fill="${theme.bg}" stroke="${theme.grid}"></rect>`;
+      out += `<text x="${width / 2}" y="${wide ? 220 : 170}" text-anchor="middle" fill="${theme.muted}" font-size="14">Weekly active teams</text>`;
+      out += `<text x="${width / 2}" y="${wide ? 278 : 220}" text-anchor="middle" fill="${theme.text}" font-size="${wide ? 58 : 42}" font-weight="900">${value.toLocaleString()}</text>`;
+      out += `<rect x="${wide ? 260 : 130}" y="${wide ? 330 : 260}" width="${wide ? 340 : 260}" height="10" rx="5" fill="${theme.grid}"></rect>`;
+      out += `<rect x="${wide ? 260 : 130}" y="${wide ? 330 : 260}" width="${(wide ? 340 : 260) * progress}" height="10" rx="5" fill="${theme.accent}"></rect>`;
+      out += `<text x="${width / 2}" y="${wide ? 362 : 290}" text-anchor="middle" fill="${theme.accent}" font-size="12" font-weight="800">${Math.round(progress * 100)}% of ${goal.toLocaleString()}</text>`;
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderArea(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: 58, r: 30, t: 88, b: 46 };
+      const pw = width - m.l - m.r;
+      const ph = height - m.t - m.b;
+      const x = scale(0, DATA.area.length - 1, m.l, m.l + pw);
+      const y = scale(0, 90, m.t + ph, m.t);
+      const line = DATA.area.map((v, i) => `${x(i)},${y(v)}`).join(" ");
+      const area = `${m.l},${m.t + ph} ${line} ${m.l + pw},${m.t + ph}`;
+      let out = titleBlock(sample, theme, width) + axisGrid(m.l, m.t, pw, ph, 90, theme);
+      out += `<polygon points="${area}" fill="${theme.colors[0]}" opacity="0.82"></polygon>`;
+      out += `<polyline points="${line}" fill="none" stroke="${theme.colors[0]}" stroke-width="3"></polyline>`;
+      DATA.area.forEach((v, i) => out += `<text x="${x(i)}" y="${height - 18}" text-anchor="middle" fill="${theme.muted}" font-size="10">W${i + 1}</text>`);
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderHistogram(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: 58, r: 30, t: 88, b: 46 };
+      const pw = width - m.l - m.r;
+      const ph = height - m.t - m.b;
+      const bins = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45].map((start) => ({
+        start,
+        count: DATA.histogram.filter((v) => v >= start && v < start + 5).length
+      }));
+      const y = scale(0, 6, m.t + ph, m.t);
+      const bw = pw / bins.length;
+      let out = titleBlock(sample, theme, width) + axisGrid(m.l, m.t, pw, ph, 6, theme, 3);
+      bins.forEach((bin, i) => {
+        const x = m.l + i * bw;
+        const yy = y(bin.count);
+        out += `<rect x="${x + 2}" y="${yy}" width="${bw - 4}" height="${m.t + ph - yy}" fill="${theme.colors[0]}" rx="3"></rect>`;
+        if (i % 2 === 0) out += `<text x="${x + bw / 2}" y="${height - 18}" text-anchor="middle" fill="${theme.muted}" font-size="10">${bin.start}</text>`;
+      });
+      return svgShell(width, height, theme, out);
+    }
+
+    function renderLollipop(sample, theme, wide = false) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      const m = { l: wide ? 140 : 110, r: 38, t: 90, b: 36 };
+      const pw = width - m.l - m.r;
+      const rowH = (height - m.t - m.b) / DATA.lollipop.length;
+      const x = scale(0, 100, m.l, m.l + pw);
+      let out = titleBlock(sample, theme, width);
+      DATA.lollipop.forEach((d, i) => {
+        const y = m.t + i * rowH + rowH / 2;
+        out += `<text x="${m.l - 14}" y="${y + 4}" text-anchor="end" fill="${theme.muted}" font-size="11">${d[0]}</text>`;
+        out += `<line x1="${m.l}" y1="${y}" x2="${x(d[1])}" y2="${y}" stroke="${theme.grid}" stroke-width="4" stroke-linecap="round"></line>`;
+        out += `<circle cx="${x(d[1])}" cy="${y}" r="${wide ? 9 : 7}" fill="${theme.colors[i % theme.colors.length]}"></circle>`;
+        out += `<text x="${x(d[1]) + 12}" y="${y + 4}" fill="${theme.text}" font-size="11" font-weight="800">${d[1]}</text>`;
+      });
+      return svgShell(width, height, theme, out);
+    }
+
+    function demoFrame(sample, theme, wide, body) {
+      const width = wide ? 860 : 520;
+      const height = wide ? 500 : 330;
+      return svgShell(width, height, theme, titleBlock(sample, theme, width) + body(width, height));
+    }
+
+    function miniAxis(width, height, theme) {
+      const x = 62;
+      const y = 88;
+      const w = width - 92;
+      const h = height - 132;
+      return { x, y, w, h, base: y + h, grid: axisGrid(x, y, w, h, 100, theme, 4) };
+    }
+
+    function renderSimpleBar(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        const values = [44, 68, 53, 81, 62];
+        const bw = c.w / values.length * 0.58;
+        let out = c.grid;
+        values.forEach((value, i) => {
+          const x = c.x + i * (c.w / values.length) + bw * 0.35;
+          const y = c.base - c.h * value / 100;
+          out += `<rect x="${x}" y="${y}" width="${bw}" height="${c.base - y}" rx="4" fill="${theme.colors[i % theme.colors.length]}"></rect>`;
+          out += `<text x="${x + bw / 2}" y="${height - 20}" text-anchor="middle" fill="${theme.muted}" font-size="10">${String.fromCharCode(65 + i)}</text>`;
+        });
+        return out;
+      });
+    }
+
+    function renderHorizontalBars(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const labels = ["Alpha", "Bravo", "Cobalt", "Delta", "Echo"];
+        const values = [88, 72, 64, 52, 39];
+        let out = "";
+        labels.forEach((label, i) => {
+          const y = 104 + i * 38;
+          const barW = (width - 180) * values[i] / 100;
+          out += `<text x="32" y="${y + 15}" fill="${theme.muted}" font-size="11">${label}</text>`;
+          out += `<rect x="100" y="${y}" width="${barW}" height="20" rx="10" fill="${theme.colors[i % theme.colors.length]}"></rect>`;
+          out += `<text x="${108 + barW}" y="${y + 15}" fill="${theme.text}" font-size="11" font-weight="800">${values[i]}</text>`;
+        });
+        return out;
+      });
+    }
+
+    function renderDistribution(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        const groups = [0, 1, 2, 3];
+        let out = c.grid;
+        groups.forEach((g, i) => {
+          const cx = c.x + 60 + i * (c.w - 120) / 3;
+          const q1 = c.base - c.h * (42 + i * 6) / 100;
+          const q3 = c.base - c.h * (76 - i * 4) / 100;
+          const med = (q1 + q3) / 2;
+          out += `<line x1="${cx}" y1="${q3 - 28}" x2="${cx}" y2="${q1 + 28}" stroke="${theme.text}" stroke-width="2"></line>`;
+          out += `<rect x="${cx - 24}" y="${q3}" width="48" height="${q1 - q3}" rx="3" fill="${theme.colors[i]}" opacity="0.8"></rect>`;
+          out += `<line x1="${cx - 24}" y1="${med}" x2="${cx + 24}" y2="${med}" stroke="${theme.bg}" stroke-width="3"></line>`;
+        });
+        return out;
+      });
+    }
+
+    function renderBubble(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        const points = [[18, 42, 16], [32, 58, 28], [48, 65, 21], [62, 74, 34], [78, 70, 25], [88, 86, 40]];
+        let out = c.grid;
+        points.forEach((p, i) => {
+          out += `<circle cx="${c.x + c.w * p[0] / 100}" cy="${c.base - c.h * p[1] / 100}" r="${p[2] / 2}" fill="${theme.colors[i % theme.colors.length]}" opacity="0.78"></circle>`;
+        });
+        return out;
+      });
+    }
+
+    function renderBullet(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const x = 72;
+        const y = 172;
+        const w = width - 144;
+        return `
+          <rect x="${x}" y="${y}" width="${w}" height="54" rx="6" fill="${theme.grid}" opacity="0.6"></rect>
+          <rect x="${x}" y="${y}" width="${w * 0.82}" height="54" rx="6" fill="${theme.colors[0]}" opacity="0.45"></rect>
+          <rect x="${x}" y="${y + 18}" width="${w * 0.68}" height="18" rx="9" fill="${theme.accent}"></rect>
+          <line x1="${x + w * 0.78}" y1="${y - 12}" x2="${x + w * 0.78}" y2="${y + 66}" stroke="${theme.text}" stroke-width="4"></line>
+          <text x="${x}" y="${y + 88}" fill="${theme.muted}" font-size="12">actual vs target</text>
+        `;
+      });
+    }
+
+    function renderRankLines(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        const series = [[5, 2, 3, 1], [1, 3, 2, 4], [3, 4, 1, 2]];
+        let out = "";
+        [1, 2, 3, 4].forEach((r) => out += `<line x1="${c.x}" y1="${c.y + (r - 1) * c.h / 3}" x2="${c.x + c.w}" y2="${c.y + (r - 1) * c.h / 3}" stroke="${theme.grid}"></line>`);
+        series.forEach((values, si) => {
+          const pts = values.map((rank, i) => `${c.x + i * c.w / 3},${c.y + (rank - 1) * c.h / 4}`).join(" ");
+          out += `<polyline points="${pts}" fill="none" stroke="${theme.colors[si]}" stroke-width="3"></polyline>`;
+        });
+        return out;
+      });
+    }
+
+    function renderCalendar(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, () => {
+        let out = "";
+        for (let row = 0; row < 5; row++) {
+          for (let col = 0; col < 7; col++) {
+            const v = (row * 7 + col) % 10 / 10;
+            out += `<rect x="${70 + col * 42}" y="${108 + row * 34}" width="30" height="24" rx="4" fill="${theme.colors[0]}" opacity="${0.18 + v * 0.78}"></rect>`;
+          }
+        }
+        return out;
+      });
+    }
+
+    function renderCandlestick(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        const values = [[30, 75, 48, 66], [42, 82, 70, 54], [38, 72, 44, 61], [50, 88, 58, 80], [46, 76, 69, 53], [55, 92, 62, 84]];
+        let out = c.grid;
+        values.forEach((v, i) => {
+          const x = c.x + 40 + i * (c.w - 80) / 5;
+          const high = c.base - c.h * v[1] / 100;
+          const low = c.base - c.h * v[0] / 100;
+          const open = c.base - c.h * v[2] / 100;
+          const close = c.base - c.h * v[3] / 100;
+          const up = v[3] >= v[2];
+          out += `<line x1="${x}" y1="${high}" x2="${x}" y2="${low}" stroke="${theme.text}" stroke-width="2"></line>`;
+          out += `<rect x="${x - 10}" y="${Math.min(open, close)}" width="20" height="${Math.max(4, Math.abs(close - open))}" fill="${up ? theme.colors[0] : theme.colors[2]}" rx="2"></rect>`;
+        });
+        return out;
+      });
+    }
+
+    function renderMapLike(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, () => {
+        const regions = [
+          "M110,150 L180,120 L240,150 L220,215 L150,225 Z",
+          "M245,145 L330,132 L380,190 L330,245 L242,220 Z",
+          "M145,232 L230,225 L252,292 L170,310 L112,270 Z",
+          "M265,250 L350,246 L390,305 L318,332 L255,300 Z"
+        ];
+        let out = "";
+        regions.forEach((d, i) => out += `<path d="${d}" fill="${theme.colors[i]}" opacity="0.78" stroke="${theme.bg}" stroke-width="3"></path>`);
+        out += `<circle cx="292" cy="205" r="9" fill="${theme.accent}"></circle>`;
+        return out;
+      });
+    }
+
+    function renderFunnel(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const cx = width / 2;
+        const widths = [360, 290, 220, 150, 90];
+        let out = "";
+        widths.forEach((w, i) => {
+          const y = 104 + i * 42;
+          out += `<path d="M${cx - w / 2},${y} H${cx + w / 2} L${cx + widths[Math.min(i + 1, widths.length - 1)] / 2},${y + 34} H${cx - widths[Math.min(i + 1, widths.length - 1)] / 2} Z" fill="${theme.colors[i % theme.colors.length]}" opacity="0.86"></path>`;
+        });
+        return out;
+      });
+    }
+
+    function renderGauge(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const cx = width / 2;
+        const cy = 240;
+        const r = 120;
+        return `
+          <path d="M${cx - r},${cy} A${r},${r} 0 0 1 ${cx + r},${cy}" fill="none" stroke="${theme.grid}" stroke-width="28" stroke-linecap="round"></path>
+          <path d="M${cx - r},${cy} A${r},${r} 0 0 1 ${cx + 58},${cy - 105}" fill="none" stroke="${theme.accent}" stroke-width="28" stroke-linecap="round"></path>
+          <text x="${cx}" y="${cy + 10}" text-anchor="middle" fill="${theme.text}" font-size="42" font-weight="900">74%</text>
+        `;
+      });
+    }
+
+    function renderNetwork(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, () => {
+        const nodes = [[150, 180], [250, 130], [360, 190], [245, 260], [410, 285], [115, 275]];
+        const edges = [[0, 1], [1, 2], [0, 3], [3, 2], [2, 4], [3, 5]];
+        let out = "";
+        edges.forEach(([a, b]) => out += `<line x1="${nodes[a][0]}" y1="${nodes[a][1]}" x2="${nodes[b][0]}" y2="${nodes[b][1]}" stroke="${theme.grid}" stroke-width="3"></line>`);
+        nodes.forEach((n, i) => out += `<circle cx="${n[0]}" cy="${n[1]}" r="${18 + (i % 3) * 5}" fill="${theme.colors[i % theme.colors.length]}"></circle>`);
+        return out;
+      });
+    }
+
+    function renderParallel(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        const axes = 5;
+        let out = "";
+        for (let i = 0; i < axes; i++) {
+          const x = c.x + i * c.w / (axes - 1);
+          out += `<line x1="${x}" y1="${c.y}" x2="${x}" y2="${c.base}" stroke="${theme.grid}" stroke-width="2"></line>`;
+        }
+        [[20, 70, 45, 80, 60], [55, 35, 72, 50, 82], [75, 62, 38, 68, 44]].forEach((row, ri) => {
+          const pts = row.map((v, i) => `${c.x + i * c.w / (axes - 1)},${c.base - c.h * v / 100}`).join(" ");
+          out += `<polyline points="${pts}" fill="none" stroke="${theme.colors[ri]}" stroke-width="3" opacity="0.85"></polyline>`;
+        });
+        return out;
+      });
+    }
+
+    function renderRadar(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const cx = width / 2;
+        const cy = 210;
+        const r = 115;
+        const vals = [0.82, 0.64, 0.72, 0.54, 0.88, 0.68];
+        const points = vals.map((v, i) => {
+          const a = -Math.PI / 2 + i * Math.PI * 2 / vals.length;
+          return `${cx + Math.cos(a) * r * v},${cy + Math.sin(a) * r * v}`;
+        }).join(" ");
+        let out = "";
+        [0.33, 0.66, 1].forEach((scale) => {
+          const ring = vals.map((_, i) => {
+            const a = -Math.PI / 2 + i * Math.PI * 2 / vals.length;
+            return `${cx + Math.cos(a) * r * scale},${cy + Math.sin(a) * r * scale}`;
+          }).join(" ");
+          out += `<polygon points="${ring}" fill="none" stroke="${theme.grid}"></polygon>`;
+        });
+        out += `<polygon points="${points}" fill="${theme.colors[0]}" opacity="0.38" stroke="${theme.colors[0]}" stroke-width="3"></polygon>`;
+        return out;
+      });
+    }
+
+    function renderPyramid(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const cx = width / 2;
+        const levels = [300, 240, 180, 120, 70];
+        let out = "";
+        levels.forEach((w, i) => {
+          const y = 104 + i * 38;
+          out += `<polygon points="${cx - w / 2},${y + 32} ${cx + w / 2},${y + 32} ${cx + levels[Math.min(i + 1, levels.length - 1)] / 2},${y} ${cx - levels[Math.min(i + 1, levels.length - 1)] / 2},${y}" fill="${theme.colors[i % theme.colors.length]}" opacity="0.84"></polygon>`;
+        });
+        return out;
+      });
+    }
+
+    function renderRange(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        const mid = [44, 51, 58, 62, 68, 74];
+        const upper = mid.map((v) => v + 12);
+        const lower = mid.map((v) => v - 10);
+        const px = (i) => c.x + i * c.w / (mid.length - 1);
+        const py = (v) => c.base - c.h * v / 100;
+        const area = upper.map((v, i) => `${px(i)},${py(v)}`).join(" ") + " " + lower.map((v, i) => `${px(mid.length - 1 - i)},${py(v)}`).join(" ");
+        return c.grid + `<polygon points="${area}" fill="${theme.colors[0]}" opacity="0.28"></polygon><polyline points="${mid.map((v, i) => `${px(i)},${py(v)}`).join(" ")}" fill="none" stroke="${theme.colors[0]}" stroke-width="3"></polyline>`;
+      });
+    }
+
+    function renderRangedDot(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, () => {
+        const rows = [["A", 28, 64], ["B", 42, 78], ["C", 34, 55], ["D", 60, 88]];
+        let out = "";
+        rows.forEach((r, i) => {
+          const y = 120 + i * 42;
+          const x1 = 110 + r[1] * 3.2;
+          const x2 = 110 + r[2] * 3.2;
+          out += `<text x="70" y="${y + 4}" fill="${theme.muted}" font-size="12">${r[0]}</text><line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${theme.grid}" stroke-width="5" stroke-linecap="round"></line><circle cx="${x1}" cy="${y}" r="7" fill="${theme.colors[0]}"></circle><circle cx="${x2}" cy="${y}" r="7" fill="${theme.colors[1]}"></circle>`;
+        });
+        return out;
+      });
+    }
+
+    function renderRose(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const cx = width / 2;
+        const cy = 210;
+        const vals = [60, 90, 45, 78, 54, 70, 82, 48];
+        let out = "";
+        vals.forEach((v, i) => {
+          const a0 = -Math.PI / 2 + i * Math.PI * 2 / vals.length;
+          const a1 = a0 + Math.PI * 2 / vals.length * 0.82;
+          out += `<path d="${arcPath(cx, cy, v * 1.35, 18, a0, a1)}" fill="${theme.colors[i % theme.colors.length]}" opacity="0.86"></path>`;
+        });
+        return out;
+      });
+    }
+
+    function renderSankey(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const left = 80;
+        const right = width - 120;
+        return `
+          <path d="M${left + 70},145 C250,145 300,120 ${right},128" fill="none" stroke="${theme.colors[0]}" stroke-width="28" opacity="0.65"></path>
+          <path d="M${left + 70},190 C260,190 300,210 ${right},218" fill="none" stroke="${theme.colors[1]}" stroke-width="22" opacity="0.65"></path>
+          <path d="M${left + 70},235 C260,235 300,265 ${right},280" fill="none" stroke="${theme.colors[2]}" stroke-width="16" opacity="0.65"></path>
+          <rect x="${left}" y="120" width="70" height="140" rx="8" fill="${theme.text}" opacity="0.9"></rect>
+          <rect x="${right}" y="110" width="70" height="52" rx="8" fill="${theme.colors[0]}"></rect>
+          <rect x="${right}" y="195" width="70" height="52" rx="8" fill="${theme.colors[1]}"></rect>
+          <rect x="${right}" y="270" width="70" height="42" rx="8" fill="${theme.colors[2]}"></rect>
+        `;
+      });
+    }
+
+    function renderHierarchy(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const cx = width / 2;
+        const nodes = [[cx, 112], [cx - 115, 190], [cx, 190], [cx + 115, 190], [cx - 160, 270], [cx - 70, 270], [cx + 70, 270], [cx + 160, 270]];
+        const edges = [[0, 1], [0, 2], [0, 3], [1, 4], [1, 5], [3, 6], [3, 7]];
+        let out = "";
+        edges.forEach(([a, b]) => out += `<line x1="${nodes[a][0]}" y1="${nodes[a][1]}" x2="${nodes[b][0]}" y2="${nodes[b][1]}" stroke="${theme.grid}" stroke-width="3"></line>`);
+        nodes.forEach((n, i) => out += `<circle cx="${n[0]}" cy="${n[1]}" r="${i === 0 ? 22 : 16}" fill="${theme.colors[i % theme.colors.length]}"></circle>`);
+        return out;
+      });
+    }
+
+    function renderTreemap(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const x = 72;
+        const y = 105;
+        const w = width - 144;
+        const h = 190;
+        return `
+          <rect x="${x}" y="${y}" width="${w * 0.52}" height="${h}" fill="${theme.colors[0]}" opacity="0.86"></rect>
+          <rect x="${x + w * 0.52 + 4}" y="${y}" width="${w * 0.25}" height="${h * 0.58}" fill="${theme.colors[1]}" opacity="0.86"></rect>
+          <rect x="${x + w * 0.52 + 4}" y="${y + h * 0.58 + 4}" width="${w * 0.25}" height="${h * 0.42 - 4}" fill="${theme.colors[2]}" opacity="0.86"></rect>
+          <rect x="${x + w * 0.77 + 8}" y="${y}" width="${w * 0.23 - 8}" height="${h * 0.5}" fill="${theme.colors[3]}" opacity="0.86"></rect>
+          <rect x="${x + w * 0.77 + 8}" y="${y + h * 0.5 + 4}" width="${w * 0.23 - 8}" height="${h * 0.5 - 4}" fill="${theme.colors[4]}" opacity="0.86"></rect>
+        `;
+      });
+    }
+
+    function renderSunburst(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width) => {
+        const cx = width / 2;
+        const cy = 210;
+        let out = `<circle cx="${cx}" cy="${cy}" r="44" fill="${theme.colors[0]}"></circle>`;
+        for (let i = 0; i < 6; i++) {
+          const a0 = -Math.PI / 2 + i * Math.PI / 3;
+          out += `<path d="${arcPath(cx, cy, 122, 52, a0, a0 + Math.PI / 3 - 0.04)}" fill="${theme.colors[(i + 1) % theme.colors.length]}" opacity="0.86"></path>`;
+        }
+        return out;
+      });
+    }
+
+    function renderStream(sample, theme, wide = false) {
+      return demoFrame(sample, theme, wide, (width, height) => {
+        const c = miniAxis(width, height, theme);
+        let out = "";
+        for (let layer = 0; layer < 4; layer++) {
+          const top = [];
+          const bottom = [];
+          for (let i = 0; i < 7; i++) {
+            const x = c.x + i * c.w / 6;
+            const center = c.y + c.h / 2 + Math.sin(i / 1.2 + layer) * 18;
+            const thick = 18 + layer * 5 + (i % 3) * 4;
+            top.push(`${x},${center - thick - layer * 16}`);
+            bottom.unshift(`${x},${center + thick - layer * 16}`);
+          }
+          out += `<polygon points="${top.join(" ")} ${bottom.join(" ")}" fill="${theme.colors[layer]}" opacity="0.72"></polygon>`;
+        }
+        return out;
+      });
+    }
+
+    function renderAuto(sample, theme, wide = false) {
+      switch (sample.family) {
+        case "area": return renderArea(sample, theme, wide);
+        case "bar": return renderSimpleBar(sample, theme, wide);
+        case "bar-table": return renderHorizontalBars(sample, theme, wide);
+        case "boxplot": return renderDistribution(sample, theme, wide);
+        case "bubble": return renderBubble(sample, theme, wide);
+        case "bullet": return renderBullet(sample, theme, wide);
+        case "bump": return renderRankLines(sample, theme, wide);
+        case "calendar": return renderCalendar(sample, theme, wide);
+        case "candlestick": return renderCandlestick(sample, theme, wide);
+        case "combo": return renderLine(sample, theme, wide) + "";
+        case "connected-scatter": return renderLine(sample, theme, wide);
+        case "density": return renderDistribution(sample, theme, wide);
+        case "donut": return renderDonut(sample, theme, wide);
+        case "ecdf": return renderLine(sample, theme, wide);
+        case "funnel": return renderFunnel(sample, theme, wide);
+        case "gantt": return renderRangedDot(sample, theme, wide);
+        case "gauge": return renderGauge(sample, theme, wide);
+        case "grouped-bar": return renderGroupedBar(sample, theme, wide);
+        case "heatmap": return renderHeatmap(sample, theme, wide);
+        case "histogram": return renderHistogram(sample, theme, wide);
+        case "kpi": return renderKpi(sample, theme, wide);
+        case "line": return renderLine(sample, theme, wide);
+        case "lollipop": return renderLollipop(sample, theme, wide);
+        case "map":
+        case "point-map": return renderMapLike(sample, theme, wide);
+        case "network": return renderNetwork(sample, theme, wide);
+        case "parallel": return renderParallel(sample, theme, wide);
+        case "pie": return renderDonut(sample, theme, wide);
+        case "pyramid": return renderPyramid(sample, theme, wide);
+        case "radar": return renderRadar(sample, theme, wide);
+        case "range-area": return renderRange(sample, theme, wide);
+        case "ranged-dot": return renderRangedDot(sample, theme, wide);
+        case "regression": return renderScatter(sample, theme, wide);
+        case "rose": return renderRose(sample, theme, wide);
+        case "sankey": return renderSankey(sample, theme, wide);
+        case "scatter": return renderScatter(sample, theme, wide);
+        case "slope": return renderRangedDot(sample, theme, wide);
+        case "sparkline": return renderLine(sample, theme, wide);
+        case "stacked-bar": return renderSimpleBar(sample, theme, wide);
+        case "streamgraph": return renderStream(sample, theme, wide);
+        case "strip": return renderBubble(sample, theme, wide);
+        case "sunburst": return renderSunburst(sample, theme, wide);
+        case "tree": return renderHierarchy(sample, theme, wide);
+        case "treemap": return renderTreemap(sample, theme, wide);
+        case "violin": return renderDistribution(sample, theme, wide);
+        case "waterfall": return renderWaterfall(sample, theme, wide);
+        default: return renderSimpleBar(sample, theme, wide);
+      }
+    }
+
+    function renderThemeOptions() {
+      for (const [id, theme] of Object.entries(THEMES)) {
+        const option = document.createElement("option");
+        option.value = id;
+        option.textContent = `${theme.label} (${id})`;
+        document.getElementById("theme-select").appendChild(option);
+      }
+    }
+
+    function renderCards() {
+      gallery.replaceChildren();
+      const theme = THEMES[activeThemeId];
+      const visibleSamples = SAMPLES.filter((sample) => activeTask === "all" || sample.task === activeTask);
+      if (!visibleSamples.some((sample) => sample.id === activeSampleId)) {
+        activeSampleId = visibleSamples[0]?.id || SAMPLES[0].id;
+      }
+      for (const sample of visibleSamples) {
+        const guidance = GUIDANCE[sample.task];
+        const card = document.createElement("article");
+        card.className = "card";
+        card.tabIndex = 0;
+        card.dataset.sample = sample.id;
+        card.innerHTML = `
+          <div class="card-chart">${renderAuto(sample, theme, false)}</div>
+          <div class="card-body">
+            <div class="card-topline"><span>${sample.chartType}</span><span>${activeThemeId}</span></div>
+            <h3>${sample.title}</h3>
+            <p>${sample.description}</p>
+            <div class="card-insight">${guidance.use}</div>
+            <div class="provider-row">
+              ${sample.providers.map((provider) => `<span class="provider">${provider}</span>`).join("")}
+            </div>
+          </div>
+        `;
+        card.addEventListener("click", () => setActiveSample(sample.id));
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setActiveSample(sample.id);
+          }
+        });
+        gallery.appendChild(card);
+      }
+    }
+
+    function setActiveSample(sampleId) {
+      activeSampleId = sampleId;
+      renderSpotlight();
+      for (const card of gallery.querySelectorAll(".card")) {
+        card.classList.toggle("is-active", card.dataset.sample === activeSampleId);
+      }
+    }
+
+    function renderSpotlight() {
+      const sample = SAMPLES.find((item) => item.id === activeSampleId) || SAMPLES[0];
+      const theme = THEMES[activeThemeId];
+      const guidance = GUIDANCE[sample.task];
+      spotlightChart.innerHTML = renderAuto(sample, theme, true);
+      spotlightTheme.textContent = `${theme.label} · ${activeThemeId}`;
+      spotlightType.textContent = `${sample.chartType} · ${sample.providers.join(", ")}`;
+      spotlightTitle.textContent = sample.title;
+      spotlightDescription.textContent = sample.description;
+      spotlightUse.textContent = guidance.use;
+      spotlightAvoid.textContent = guidance.avoid;
+      spotlightAccessibility.textContent = guidance.accessibility;
+      themeCode.textContent = `"theme_spec": "${activeThemeId}"`;
+    }
+
+    function rerenderAll() {
+      renderCards();
+      renderSpotlight();
+      setActiveSample(activeSampleId);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("is-visible");
+      window.setTimeout(() => toast.classList.remove("is-visible"), 1600);
+    }
+
+    document.getElementById("theme-select").addEventListener("change", (event) => {
+      activeThemeId = event.target.value;
+      rerenderAll();
+    });
+
+    taskSelect.addEventListener("change", (event) => {
+      activeTask = event.target.value;
+      rerenderAll();
+    });
+
+    document.getElementById("copy-theme").addEventListener("click", async () => {
+      const text = `"theme_spec": "${activeThemeId}"`;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Copied theme_spec");
+      } catch {
+        showToast(text);
+      }
+    });
+
+    document.getElementById("shuffle-theme").addEventListener("click", () => {
+      const ids = Object.keys(THEMES);
+      const next = ids[(ids.indexOf(activeThemeId) + 1) % ids.length];
+      activeThemeId = next;
+      document.getElementById("theme-select").value = next;
+      rerenderAll();
+    });
+
+    renderThemeOptions();
+    document.getElementById("theme-select").value = activeThemeId;
+    rerenderAll();
+  </script>
+</body>
+</html>

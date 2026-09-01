@@ -1,0 +1,32 @@
+[
+  {
+    "name": "chart-big-idea",
+    "description": "Distill the central claim a chart should communicate before choosing the chart type, title, or encodings. Use when creating chart titles, figure captions, visual briefs, or deciding whether a chart earns its place.",
+    "path": "skills-visual/chart-big-idea/SKILL.md"
+  },
+  {
+    "name": "chart-vocabulary",
+    "description": "Choose appropriate chart types and Flint encodings from the analytical task, data shape, and reader goal. Use when selecting among bar, line, scatter, heatmap, histogram, KPI, waterfall, area, donut, and other Flint chart templates.",
+    "path": "skills-visual/chart-vocabulary/SKILL.md"
+  },
+  {
+    "name": "flint-chart",
+    "description": "Author Flint charts in Scout from data, intent, and audience context. Use when creating, selecting, rendering, or refining charts with the Flint MCP tools; pairs with chart-big-idea, chart-vocabulary, and render-verify.",
+    "path": "skills-visual/flint-chart/SKILL.md"
+  },
+  {
+    "name": "flint-chart-mcp",
+    "description": "Set up, diagnose, and register the optional Flint MCP runtime for Microsoft Scout. Use when Flint tools are missing, chart rendering fails, or the user wants to install or repair the visual add-on runtime.",
+    "path": "skills-visual/flint-chart-mcp/SKILL.md"
+  },
+  {
+    "name": "print-svg-style-guide",
+    "description": "Produce clean, print-safe SVG and chart styling guidance for documentation and reports. Use when visual artifacts need consistent typography, margins, contrast, export behavior, or compatibility with markdown, PDF, and print workflows.",
+    "path": "skills-visual/print-svg-style-guide/SKILL.md"
+  },
+  {
+    "name": "render-verify",
+    "description": "Verify rendered visual artifacts before delivery. Use after rendering Flint charts, Mermaid diagrams, SVG figures, screenshots, or image assets to catch invisible output, broken links, unreadable labels, clipped marks, and misleading presentation.",
+    "path": "skills-visual/render-verify/SKILL.md"
+  }
+]
