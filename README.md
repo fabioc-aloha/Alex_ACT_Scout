@@ -1,5 +1,7 @@
 # Alex ACT Scout
 
+> **Note:** Part of the Alex ACT family. The current flagship release is [Alex_ACT_ONE](https://github.com/fabioc-aloha/Alex_ACT_ONE).
+
 ![Alex ACT Scout banner](assets/banner.svg)
 
 Installable Microsoft Scout skills for disciplined analysis, engineering work,
